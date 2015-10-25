@@ -1,0 +1,13 @@
+PostFilteringParameters :=
+  ; parameter file for postfilter
+  ; specifies a Metz with zero power (i.e. a Gaussian in continuous Fourier space)
+  Postfilter type :=  Separable Cartesian Metz
+  Separable Cartesian Metz Filter Parameters :=
+    x-dir filter FWHM (in mm):= 5
+    y-dir filter FWHM (in mm):= 5
+    z-dir filter FWHM (in mm):= 0 ; 2D only
+    x-dir filter Metz power:= 0.0
+    y-dir filter Metz power:= 0.0
+    z-dir filter Metz power:=0.0
+  END Separable Cartesian Metz Filter Parameters :=
+End PostFiltering Parameters:=

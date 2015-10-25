@@ -1,0 +1,7 @@
+FBP2DParameters :=
+input file := atten_corr_seg0_scatter_corrected_data_3.hs
+maximum absolute segment number to process := -1
+zoom := 1
+xy output image size (in pixels) := 155
+output filename prefix := scatter_corrected_image
+END :=

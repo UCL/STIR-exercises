@@ -1,0 +1,44 @@
+OSMAPOSLParameters :=
+
+        objective function type:= PoissonLogLikelihoodWithLinearModelForMeanAndProjData
+	
+	PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
+
+		input file := my_sim.hs
+
+		projector pair type := Matrix
+			Projector Pair Using Matrix Parameters :=
+			Matrix type := SPECT UB
+
+			Projection Matrix By Bin SPECT UB Parameters:=
+			
+				maximum number of sigmas:= 2.0
+
+				;PSF type of correction { 2D // 3D // Geometrical }
+				psf type:=Geometrical
+
+				;Attenuation correction { Simple // Full // No }
+				attenuation type := Simple	
+				;Values in attenuation map in cm-1
+				attenuation map := CTAC.hv
+
+				;Mask properties { Cylinder // Attenuation Map // Explicit Mask // No}
+				mask type := Attenuation Map
+
+                                keep all views in cache := 1
+
+			End Projection Matrix By Bin SPECT UB Parameters:=
+
+	End Projector Pair Using Matrix Parameters :=
+
+	end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
+
+	initial estimate:= init.hv
+	output filename prefix := EMML
+
+	number of subsets:= 1
+	number of subiterations:= 240
+	Save estimates at subiteration intervals:= 24
+
+
+END :=

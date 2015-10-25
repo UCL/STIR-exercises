@@ -1,0 +1,65 @@
+OSMAPOSLParameters :=
+; example file for running OSEM with interfiltering
+; filter specific things are at the end
+
+objective function type:=PoissonLogLikelihoodWithLinearModelForMeanAndGatedProjDataWithMotion
+PoissonLogLikelihoodWithLinearModelForMeanAndGatedProjDataWithMotion Parameters:=
+
+input filename := INPUTFILE
+
+maximum absolute segment number to process := -1
+zero end planes of segment 0:= 1
+
+projector pair type := Matrix
+Projector Pair Using Matrix Parameters :=
+Matrix type := Ray Tracing
+Ray Tracing Matrix Parameters:=
+  number of rays in tangential direction to trace for each bin := 10
+End Ray Tracing Matrix Parameters:=
+End Projector Pair Using Matrix Parameters :=
+
+; if the next parameter is disabled, 
+; the sensitivity will be computed using the normalisation object
+sensitivity filename:= SENSOFILE
+; if next is set to 1, sensitivity will be recomputed
+; and written to file (if "sensitivity filename" is set)
+recompute sensitivity := 1
+use subset sensitivities := 1
+
+normalisation sinograms:= NORMALIZATION
+additive sinograms := ADDITIVE
+
+; motion field related files
+Gate Definitions filename := MOTIONFILE.gdef
+Motion Vectors filename prefix := MOTIONFILE
+Reverse Motion Vectors filename prefix := MOTIONINVFILE
+; here comes the MRP stuff
+prior type := FilterRootPrior
+
+FilterRootPrior Parameters :=
+  penalisation factor := 0
+ ; you can use any image processor here
+  ; the next parameters specify a 3x3x3 median
+  Filter type := Median
+    Median Filter Parameters :=
+    mask radius x := 1
+    mask radius y := 1
+    mask radius z := 1
+    End Median Filter Parameters:=
+END FilterRootPrior Parameters :=
+
+zoom:= 1
+xy output image size (in pixels) := 155
+end PoissonLogLikelihoodWithLinearModelForMeanAndGatedProjDataWithMotion Parameters:=
+
+; Number of subsets should be a divisor of num_views/4
+number of subsets:= 16
+; Use for starting the numbering from something else than 1
+start at subiteration number:= 1
+; Use if you want to start from another subset than 0 (but why?)
+start at subset:= 0
+number of subiterations:= 64
+save estimates at subiteration intervals:= 16
+output filename prefix := OUTPUTFILE
+
+END :=

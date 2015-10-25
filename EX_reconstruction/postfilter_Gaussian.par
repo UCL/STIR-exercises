@@ -1,0 +1,13 @@
+PostFilteringParameters :=
+  ; sample parameter for postfilter
+  ; Here we use a Metz filter with power 0, this is a Gaussian (in continuous Fourier space)
+  Postfilter type :=  Separable Cartesian Metz
+   Separable Cartesian Metz Filter Parameters :=
+     x-dir filter FWHM (in mm):= 5
+     y-dir filter FWHM (in mm):= 5
+     z-dir filter FWHM (in mm):= 0 ; 0 as only a single slice image
+     x-dir filter Metz power:= 0
+     y-dir filter Metz power:= 0
+     z-dir filter Metz power:= 0
+END Separable Cartesian Metz Filter Parameters :=
+End PostFiltering Parameters:=

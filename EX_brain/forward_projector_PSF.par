@@ -1,0 +1,28 @@
+Forward Projector parameters:=
+; example par file for specifying the forward projector for e.g. fwdtest
+type:=Pre Smoothing
+  Pre Smoothing Forward Projector Parameters:=
+  original forward projector type := Matrix
+    Forward Projector Using Matrix Parameters :=
+    Matrix type := Ray Tracing
+      Ray tracing matrix parameters :=
+     End Ray tracing matrix parameters :=
+    End Forward Projector Using Matrix Parameters :=
+  ; image-based blurring
+  filter type :=  Separable Cartesian Metz
+  Separable Cartesian Metz Filter Parameters :=
+    x-dir filter FWHM (in mm):= 5
+    y-dir filter FWHM (in mm):= 5
+    z-dir filter FWHM (in mm):= 0 ; 2D only
+    x-dir filter Metz power:= 0.0
+    y-dir filter Metz power:= 0.0
+    z-dir filter Metz power:=0.0
+    ; truncate it a bit to avoid negative lobes
+    x-dir maximum kernel size := 5
+    y-dir maximum kernel size := 5
+    z-dir maximum kernel size := 1
+
+  END Separable Cartesian Metz Filter Parameters :=
+    
+  End Pre Smoothing Forward Projector Parameters:=
+end:=
