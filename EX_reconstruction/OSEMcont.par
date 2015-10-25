@@ -18,8 +18,6 @@ Bin Normalisation type := From ProjData
 ; CAREFUL: use correct number of subsets (or just disable this)
 subset sensitivity filenames:= subset_sensitivity_8subsets_%d.hv
 
-; here comes the prior stuff
-
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 
 initial estimate:= OSEM_240.hv
