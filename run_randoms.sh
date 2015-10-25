@@ -7,7 +7,14 @@ construct_randoms_from_singles true_randoms.hs true_singles template_sinogram_sp
 
 poisson_noise my_randoms.hs true_randoms.hs 1 1
 
-find_ML_singles_from_delayed estimated_singles my_randoms.hs  5
+# generate file with text to tell next command that we don't want to display results,
+# but have output at every iteration
+cat <<EOF > input_parameters.txt
+0
+1
+1
+EOF
+find_ML_singles_from_delayed estimated_singles my_randoms.hs  5 < input_parameters.txt
 
 construct_randoms_from_singles estimated_randoms.hs estimated_singles template_sinogram_span1.hs 5
 
