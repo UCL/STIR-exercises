@@ -1,7 +1,8 @@
 FBP2DParameters :=
-input file := atten_corr_seg0_scatter_corrected_data_3.hs
+input file := ${INPUT}
 maximum absolute segment number to process := -1
+; set this the same as the input simulation for convenience
 zoom := 1
 xy output image size (in pixels) := 155
-output filename prefix := scatter_corrected_image
+output filename prefix := ${OUTPUT}
 END :=

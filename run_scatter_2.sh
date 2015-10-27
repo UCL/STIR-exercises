@@ -1,3 +1,5 @@
+echo "This exercise is currently broken."
+exit 1
 for g in 1 ; do 
 cd working_folder/GATE${g}
 stir_subtract -s input_g${g} my_prompts_g${g}.hs my_randoms_g${g}.hs

@@ -13,8 +13,8 @@ lower_energy_threshold :=350
 upper_energy_threshold :=650
 
 activity_image_filename := ${ACTIVITY_IMAGE}
-density_image_filename := ${ATTEN_IMAGE}
-density_image_for_scatter_points_filename := zoomed_${ATTEN_IMAGE}
+density_image_filename := ${DENSITY_IMAGE}
+density_image_for_scatter_points_filename := ${LOW_DENSITY_IMAGE}
 template_proj_data_filename :=  ${TEMPLATE}
 
 ; output filename without extension
