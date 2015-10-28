@@ -14,7 +14,7 @@ mu-map on the scatter estimate, and on the reconstructed image.
 
 Prerequisite:
 You should have executed the following on your command prompt
-    ./run_simulations_thorax.sg
+    ./run_simulations_thorax.sh
     ./run_scatter_0.sh
     ./run_scatter_3.sh
 

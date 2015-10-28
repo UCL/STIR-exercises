@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Example script to serve as starting point for display the results of the brain simulation
+Example script to serve as starting point for display the results of the thorax simulation
 
-The current script reads results from run_scatter0 and displays them comparing 
-with the truth (i.e. simulation input and simulation scatter output)
+The current script reads results from the simulation and displays them.
+
+Prerequisite:
+You should have executed the following on your command prompt
+    ./run_simulations_thorax.sh
 
 Author: Kris Thielemans
 """
@@ -49,22 +52,24 @@ randoms=to_numpy(stir.ProjData.read_from_file('my_randoms_g1.hs'));
 plt.figure()
 ax=plt.subplot(1,3,1);
 plt.imshow(prompts[5,:,:,]);
-plt.colorbar()
+plt.clim(0,prompts.max())
 ax.set_title('Prompts');
 plt.axis('off');
+plt.colorbar()
 
 ax=plt.subplot(1,3,2);
 plt.imshow(scatter[5,:,:,]);
-plt.colorbar()
+plt.clim(0,scatter.max());
 ax.set_title('scatter');
 plt.axis('off');
+plt.colorbar()
 
 ax=plt.subplot(1,3,3);
 plt.imshow(randoms[5,:,:,]);
-plt.clim(0,maxforplot);
-plt.colorbar()
+plt.clim(0,randoms.max());
 ax.set_title('randoms');
 plt.axis('off');
+plt.colorbar()
 #%% Display central horizontal profiles through the sinogram
 plt.figure()
 plt.plot(prompts[5,64/2,:],'b');

@@ -2,8 +2,18 @@
 """
 Example script to serve as starting point for evaluating scatter results
 
-The current script reads results from run_scatter0 and displays them comparing 
+The current script reads results from run_scatter_0 and displays them comparing 
 with the truth (i.e. simulation input and simulation scatter output)
+
+run_scatter_0.sh run the standard SSS scatter estimation algorithm on the 
+simulated data, and then runs FBP.  With this exercise you get an idea
+of what the scatter looks like and how accurate the scatter estimation is
+in the ideal case (i.e. where the model exactly matches the actual scatter generation).
+
+Prerequisite:
+You should have executed the following on your command prompt
+    ./run_simulations_thorax.sh
+    ./run_scatter_0.sh
 
 Author: Kris Thielemans
 """

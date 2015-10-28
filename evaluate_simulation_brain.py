@@ -2,8 +2,11 @@
 """
 Example script to serve as starting point for display the results of the brain simulation
 
-The current script reads results from run_scatter0 and displays them comparing 
-with the truth (i.e. simulation input and simulation scatter output)
+The current script reads results from the simulation and displays them.
+
+Prerequisite:
+You should have executed the following on your command prompt
+    ./run_simulation_brain.sh
 
 Author: Kris Thielemans
 """
@@ -15,8 +18,6 @@ import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
 os.chdir('/home/stir/exercises')
-#%% run simulation (if you haven't done it yet)
-print(os.popen('./run_simulation_brain.sh').read())
 #%% change directory to where the output files are
 os.chdir('working_folder/brain')
 #%% Read in images
@@ -46,26 +47,27 @@ scatter=to_numpy(stir.ProjData.read_from_file('my_scatter.hs'));
 randoms=to_numpy(stir.ProjData.read_from_file('my_randoms.hs'));
 #%% Display bitmaps of a middle sinogram
 # Note that scatter is zero in this brain simulation
-maxforplot=prompts.max();
-
 plt.figure()
 ax=plt.subplot(1,3,1);
 plt.imshow(prompts[5,:,:,]);
-plt.clim(0,maxforplot)
+plt.clim(0,prompts.max())
 ax.set_title('Prompts');
 plt.axis('off');
+plt.colorbar()
 
 ax=plt.subplot(1,3,2);
 plt.imshow(scatter[5,:,:,]);
-plt.clim(0,maxforplot);
+plt.clim(0,scatter.max());
 ax.set_title('scatter');
 plt.axis('off');
+plt.colorbar()
 
 ax=plt.subplot(1,3,3);
 plt.imshow(randoms[5,:,:,]);
-plt.clim(0,maxforplot);
+plt.clim(0,randoms.max());
 ax.set_title('randoms');
 plt.axis('off');
+plt.colorbar()
 #%% Display central horizontal profiles through the sinogram
 plt.figure()
 plt.hold(True)
