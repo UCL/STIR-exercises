@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Example script to serve as starting point for evaluating scatter results
-of run3 (with incorrect CTAC)
+of run3 (with incorrect CTAC/mu-map)
 
 The current script reads results from run0 and run3 and displays them.
+
+In this exercise, a wrong mu-map (here called CTAC) is used, where bone mu-values are approximately 
+set to lung mu-values, maybe like in PET-MR.
+
+run_scatter_3.sh runs both the scatter estimation and the attenuation correction
+with this wrong CTAC. With this exercise you can check the influence of the wrong
+mu-map on the scatter estimate, and on the reconstructed image.
+
+Prerequisite:
+You should have executed the following on your command prompt
+    ./run_simulations_thorax.sg
+    ./run_scatter_0.sh
+    ./run_scatter_3.sh
 
 Author: Kris Thielemans
 """
@@ -14,7 +27,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('/home/stir/stir-exercises')
+os.chdir('/home/stir/exercises')
 #%% change directory to where the output files are
 os.chdir('working_folder/GATE1')
 #%% read in data from GATE2
@@ -31,17 +44,20 @@ maxforplot=correctCTAC.max();
 
 slice=10;
 plt.figure();
-plt.subplot(1,2,1);
+ax=plt.subplot(1,2,1);
 plt.imshow(correctCTAC[slice,:,:,]);
 plt.colorbar();
 plt.clim(0,maxforplot);
 plt.axis('off');
+ax.set_title('correct CTAC')
 
-plt.subplot(1,2,2);
+ax=plt.subplot(1,2,2);
 plt.imshow(wrongCTAC[slice,:,:,]);
 plt.clim(0,maxforplot);
 plt.colorbar();
 plt.axis('off');
+ax.set_title('incorrect CTAC')
+
 #%% horizontal profiles through CTACs
 plt.figure();
 plt.plot(correctCTAC[10,154/2,:],'b');
@@ -62,14 +78,14 @@ plt.axis('off');
 ax=plt.subplot(1,3,2);
 plt.imshow(estimated_scatter_run0[10,:,:,]);
 plt.clim(0,maxforplot);
-ax.set_title('estimated (correct CTAC)');
+ax.set_title('estimated\n(correct CTAC)');
 plt.axis('off');
 
 
 ax=plt.subplot(1,3,3);
 plt.imshow(estimated_scatter_run3[10,:,:,]);
 plt.clim(0,maxforplot);
-ax.set_title('estimated (incorrect CTAC)');
+ax.set_title('estimated\n(incorrect CTAC)');
 plt.axis('off');
 #%% Display central profiles through the sinogram
 plt.figure()
@@ -77,7 +93,7 @@ plt.plot(org_scatter[10,:,192/2],'b');
 plt.hold(True)
 plt.plot(estimated_scatter_run0[10,:,192/2],'c');
 plt.plot(estimated_scatter_run3[10,:,192/2],'r');
-plt.legend(('original','estimated/correct','estimated/incorrect'));
+plt.legend(('original','estimated (correct CTAC)','estimated (incorrect CTAC)'));
 
 #%% Read in images
 org_image=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('FDG_g1.hv'));
@@ -88,23 +104,27 @@ maxforplot=org_image.max()*.6;
 
 slice=10;
 plt.figure();
-plt.subplot(1,3,1);
+ax=plt.subplot(1,3,1);
 plt.imshow(org_image[slice,:,:,]);
 plt.colorbar();
 plt.clim(0,maxforplot);
 plt.axis('off');
+ax.set_title('ground truth')
 
-plt.subplot(1,3,2);
+ax=plt.subplot(1,3,2);
 plt.imshow(fbp_result_run0[slice,:,:,]);
 plt.clim(0,maxforplot);
 plt.colorbar();
 plt.axis('off');
+ax.set_title('FBP\n(correct CTAC)')
 
-plt.subplot(1,3,3);
+ax=plt.subplot(1,3,3);
 plt.imshow(fbp_result_run3[slice,:,:,]);
 plt.clim(0,maxforplot);
 plt.colorbar();
 plt.axis('off');
+ax.set_title('FBP\n(incorrect CTAC)')
+
 #%% horizontal profiles through images
 plt.figure();
 plt.plot(org_image[10,154/2,:],'b');

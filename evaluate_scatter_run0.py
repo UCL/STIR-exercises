@@ -14,7 +14,9 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('/home/stir/stir-exercises')
+os.chdir('/home/stir/exercises')
+#%% run scatter 0 case (if you haven't done it yet)
+print(os.popen('./run_scatter_0.sh').read())
 #%% change directory to where the output files are
 os.chdir('working_folder/GATE1')
 #%% read in data from GATE1
@@ -46,7 +48,7 @@ plt.legend(('original','estimated'));
 #%% Read in images
 org_image=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('FDG_g1.hv'));
 fbp_result=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('FBP_recon_with_scatter_correction_run0.hv'));
-#%% bitmpa display of images
+#%% bitmap display of images
 maxforplot=org_image.max()*1.1;
 
 slice=10;
@@ -55,12 +57,14 @@ plt.subplot(1,2,1);
 plt.imshow(org_image[slice,:,:,]);
 plt.colorbar();
 plt.clim(0,maxforplot);
+plt.set_title('input for simulation')
 plt.axis('off');
 
 plt.subplot(1,2,2);
 plt.imshow(fbp_result[slice,:,:,]);
 plt.clim(0,maxforplot);
 plt.colorbar();
+plot.set_title('FBP after scatter correction')
 plt.axis('off');
 #%% horizontal profiles through images
 plt.figure();

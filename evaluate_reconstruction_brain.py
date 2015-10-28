@@ -11,7 +11,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('/home/stir/stir-exercises')
+os.chdir('/home/stir/exercises')
 #%% run simulation (if you haven't done it yet)
 print(os.popen('./run_reconstruction_brain.sh').read())
 #%% change directory to where the output files are
@@ -68,14 +68,14 @@ plt.imshow(OSEM240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('EMML240');
+ax.set_title('OSEM240');
 
 ax=plt.subplot(1,3,2);
 plt.imshow(OSEM240_continued_1[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('OSEM240');
+ax.set_title('OSEM241');
 
 diff=OSEM240_continued_1-OSEM240;
 ax=plt.subplot(1,3,3);
@@ -87,8 +87,8 @@ ax.set_title('diff');
 
 #%% Display central horizontal profiles through the image
 plt.figure()
-plt.plot(OSEM240_continued_1[slice,92/2,:],'b');
 plt.hold(True)
+plt.plot(OSEM240_continued_1[slice,92/2,:],'b');
 plt.plot(OSEM240[slice,92/2,:],'c');
 plt.legend(('OSEM240_continued_1','OSEM240'));
 
@@ -96,6 +96,6 @@ plt.figure()
 plt.hold(True);
 plt.plot((OSEM240_continued_1-OSEM240)[slice,92/2,:],'b');
 plt.plot((OSEM240_continued_2-OSEM240_continued_1)[slice,92/2,:],'k');
-plt.legend(('241 - 240', '242-241'));
+plt.legend(('subiter 241 - subiter 240', 'subiter 242 - subiter 241'));
 #%% close all plots
 plt.close('all')

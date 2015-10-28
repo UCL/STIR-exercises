@@ -1,4 +1,5 @@
 #! /bin/bash
+export OMP_NUM_THREADS=1
 for g in 1 2 ; do 
     # set some initial variable such that the rest of the script is
     # the same for all runs

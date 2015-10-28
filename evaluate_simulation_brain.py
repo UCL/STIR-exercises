@@ -14,7 +14,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('/home/stir/stir-exercises')
+os.chdir('/home/stir/exercises')
 #%% run simulation (if you haven't done it yet)
 print(os.popen('./run_simulation_brain.sh').read())
 #%% change directory to where the output files are
@@ -45,6 +45,7 @@ scatter=to_numpy(stir.ProjData.read_from_file('my_scatter.hs'));
 # randoms (constant)
 randoms=to_numpy(stir.ProjData.read_from_file('my_randoms.hs'));
 #%% Display bitmaps of a middle sinogram
+# Note that scatter is zero in this brain simulation
 maxforplot=prompts.max();
 
 plt.figure()
@@ -67,11 +68,11 @@ ax.set_title('randoms');
 plt.axis('off');
 #%% Display central horizontal profiles through the sinogram
 plt.figure()
-plt.plot(prompts[5,64/2,:],'b');
 plt.hold(True)
+plt.plot(prompts[5,64/2,:],'b');
 plt.plot(scatter[5,64/2,:],'c');
 plt.plot((scatter+randoms)[5,64/2,:],'g');
-plt.legend(('prompts','scatter','randoms', 'scatter+randoms'));
+plt.legend(('prompts','scatter', 'scatter+randoms'));
 
 #%% close all plots
 plt.close('all')
