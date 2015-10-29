@@ -43,9 +43,9 @@ sinogram=to_numpy(stir.ProjData.read_from_file('my_sim.hs'));
 # after adding some noise
 noisy_sinogram=to_numpy(stir.ProjData.read_from_file('my_noise.hs'));
 #%% Display bitmaps of a middle sinogram
-# When you compare this to PET sinograms, what is the difference?
-# Is the angle (theta) range the same? 
-# (open the header of a sinogram, e.g. my_sim.hs, to check)
+# When you compare this to PET sinograms, is the angle (theta) range the same? 
+# (open the header of a sinogram, e.g. my_sim.hs, to check what the range is for this 
+# SPECT sinogram)
 maxforplot=sinogram.max();
 
 slice=0; # single sinogram only, but returned as a 3D array
@@ -66,10 +66,13 @@ plt.figure()
 plt.plot(sinogram[slice,128/2,:],'b');
 plt.hold(True)
 plt.plot(noisy_sinogram[slice,128/2,:],'c');
-plt.legend(('simulation','with noise'));
+plt.legend(('simulation','with added noise'));
 #%% What to do now?
 # - make a copy of the files to a new directory
-#  and edit the new copies and simulate again via the command
+#  and edit the new forward_projector_SPECT.par to change PSF parameters
+#  and/or simulate_data.sh to change the amount of noise
+# (run poisson_noise without arguments to get a usage message)
+#  Then simulate again via the command
 #    ./simulate_data.sh emission.hv CTAC.hv template_sinogram.hs
 #%% close all plots
 plt.close('all')

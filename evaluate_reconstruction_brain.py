@@ -11,6 +11,7 @@ You should have executed the following on your command prompt
 Author: Kris Thielemans
 """
 #%% Initial imports
+import numpy
 import matplotlib.pyplot as plt
 import stir
 from stirextra import *
@@ -30,8 +31,9 @@ OSEM244=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_contin
 
 #%% bitmap display of images EMML vs OSEM
 maxforplot=EMML240.max();
+# pick central slice
+slice=numpy.floor(EMML240.shape[0]/2);
 
-slice=5;
 plt.figure();
 ax=plt.subplot(1,3,1);
 plt.imshow(EMML240[slice,:,:,]);
@@ -65,7 +67,9 @@ plt.legend(('EMML240','OSEM240'));
 #%% example of display over subiterations
 maxforplot=EMML240.max();
 
-slice=5;
+# pick central slice
+slice=numpy.floor(EMML240.shape[0]/2);
+
 plt.figure();
 ax=plt.subplot(1,3,1);
 plt.imshow(OSEM240[slice,:,:,]);

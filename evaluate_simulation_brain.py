@@ -11,6 +11,7 @@ You should have executed the following on your command prompt
 Author: Kris Thielemans
 """
 #%% Initial imports
+import numpy
 import matplotlib.pyplot as plt
 import stir
 from stirextra import *
@@ -75,6 +76,18 @@ plt.plot(prompts[5,64/2,:],'b');
 plt.plot(scatter[5,64/2,:],'c');
 plt.plot((scatter+randoms)[5,64/2,:],'g');
 plt.legend(('prompts','scatter', 'scatter+randoms'));
+#%%  Display some different views in an a movie
+import matplotlib.animation as animation
+bitmaps=[]
+fig=plt.figure()
+for view in range(0,64,4):
+    bitmap=plt.imshow(prompts[:,view,:,]);
+    plt.clim(0,prompts.max())
+    #plt.set_title('Prompts view %d');
+    plt.axis('off');
+    bitmaps.append([bitmap])
+
+ani = animation.ArtistAnimation(fig, bitmaps, interval=100, blit=True, repeat_delay=1000)
 
 #%% close all plots
 plt.close('all')

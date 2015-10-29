@@ -18,9 +18,6 @@ import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
 os.chdir('/home/stir/exercises')
-#%% run simulation (if you haven't done it yet)
-# this might take a few minutes
-print(os.popen('./run_simulations_thorax.sh').read())
 #%% change directory to where the output files are.
 os.chdir('working_folder/GATE1')
 #%% Read in images that are used as input for the simulation
@@ -72,12 +69,24 @@ plt.axis('off');
 plt.colorbar()
 #%% Display central horizontal profiles through the sinogram
 plt.figure()
-plt.plot(prompts[5,64/2,:],'b');
 plt.hold(True)
+plt.plot(prompts[5,64/2,:],'b');
 plt.plot(scatter[5,64/2,:],'c');
 plt.plot(randoms[5,64/2,:],'k');
 plt.plot((scatter+randoms)[5,64/2,:],'g');
 plt.legend(('prompts','scatter','randoms', 'scatter+randoms'));
+#%%  Display some different views in an a movie
+import matplotlib.animation as animation
+bitmaps=[]
+fig=plt.figure()
+for view in range(0,64,4):
+    bitmap=plt.imshow(prompts[:,view,:,]);
+    plt.clim(0,prompts.max())
+    #plt.set_title('Prompts view %d');
+    plt.axis('off');
+    bitmaps.append([bitmap])
+
+ani = animation.ArtistAnimation(fig, bitmaps, interval=100, blit=True, repeat_delay=1000)
 
 #%% What to do now?
 # - read data from GATE2
