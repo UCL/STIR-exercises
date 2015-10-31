@@ -75,7 +75,7 @@ subset sensitivity filenames:= PSF_subset_sensitivity_8subsets_%d.hv
 ; here comes the prior stuff
 prior type := quadratic
   Quadratic Prior Parameters:=
-  penalisation factor := 1
+  penalisation factor := .01
   END Quadratic Prior Parameters:=
 
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=

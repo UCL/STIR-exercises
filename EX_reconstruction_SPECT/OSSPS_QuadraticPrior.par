@@ -4,25 +4,38 @@ OSSPSParameters :=
 objective function type:= PoissonLogLikelihoodWithLinearModelForMeanAndProjData
 PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 
-input file := my_prompts.hs
+		input file := my_sim.hs
 
-; additive projection data to handle randoms etc
-additive sinogram := my_additive_sinogram.hs 
+		projector pair type := Matrix
+			Projector Pair Using Matrix Parameters :=
+			Matrix type := SPECT UB
 
-Bin Normalisation type := From ProjData
-  Bin Normalisation From ProjData :=
-   normalisation projdata filename:= my_multfactors.hs
-  End Bin Normalisation From ProjData:=
+			Projection Matrix By Bin SPECT UB Parameters:=
+			
+				maximum number of sigmas:= 2.0
 
-; the sensitivity will be reused from the OSEM runs
-; CAREFUL: use correct number of subsets in name (or just disable this)
-subset sensitivity filenames:= subset_sensitivity_8subsets_%d.hv
+				;PSF type of correction { 2D // 3D // Geometrical }
+				psf type:=Geometrical
 
-; here comes the prior stuff
-prior type := quadratic
-  Quadratic Prior Parameters:=
-  penalisation factor := .01
-  END Quadratic Prior Parameters:=
+				;Attenuation correction { Simple // Full // No }
+				attenuation type := Simple	
+				;Values in attenuation map in cm-1
+				attenuation map := CTAC.hv
+
+				;Mask properties { Cylinder // Attenuation Map // Explicit Mask // No}
+				mask type := Attenuation Map
+
+                                keep all views in cache := 1
+
+			End Projection Matrix By Bin SPECT UB Parameters:=
+
+	End Projector Pair Using Matrix Parameters :=
+
+	; here comes the prior stuff
+	prior type := quadratic
+	  Quadratic Prior Parameters:=
+	    penalisation factor := .1
+	  END Quadratic Prior Parameters:=
 
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 

@@ -21,14 +21,14 @@ subset sensitivity filenames:= subset_sensitivity_8subsets_%d.hv
 ; here comes the prior stuff
 prior type := quadratic
   Quadratic Prior Parameters:=
-  penalisation factor := .01
+  penalisation factor := .1
   END Quadratic Prior Parameters:=
 
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 
 initial estimate:= OSEM_24.hv
 
-output filename prefix := OSSPS_QP
+output filename prefix := OSSPS_QP_High
 number of subsets:= 8
 number of subiterations:= 240
 save estimates at subiteration intervals:= 24

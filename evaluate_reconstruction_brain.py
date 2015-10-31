@@ -58,10 +58,13 @@ plt.axis('off');
 ax.set_title('diff');
 
 #%% Display central horizontal profiles through the image
+# pick central line
+row=numpy.floor(OSEM240.shape[1]/2);
+
 plt.figure()
-plt.plot(EMML240[slice,92/2,:],'b');
+plt.plot(EMML240[slice,row,:],'b');
 plt.hold(True)
-plt.plot(OSEM240[slice,92/2,:],'c');
+plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('EMML240','OSEM240'));
 
 #%% example of display over subiterations
@@ -94,16 +97,19 @@ plt.axis('off');
 ax.set_title('diff');
 
 #%% Display central horizontal profiles through the image
+# pick central line
+row=numpy.floor(OSEM240.shape[1]/2);
+
 plt.figure()
 plt.hold(True)
-plt.plot(OSEM241[slice,92/2,:],'b');
-plt.plot(OSEM240[slice,92/2,:],'c');
+plt.plot(OSEM241[slice,row,:],'b');
+plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('OSEM241','OSEM240'));
 
 plt.figure()
 plt.hold(True);
-plt.plot((OSEM241-OSEM240)[slice,92/2,:],'b');
-plt.plot((OSEM242-OSEM241)[slice,92/2,:],'k');
+plt.plot((OSEM241-OSEM240)[slice,row,:],'b');
+plt.plot((OSEM242-OSEM241)[slice,row,:],'k');
 plt.legend(('subiter 241 - subiter 240', 'subiter 242 - subiter 241'));
 #%% close all plots
 plt.close('all')
