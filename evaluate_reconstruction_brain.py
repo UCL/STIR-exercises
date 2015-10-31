@@ -22,12 +22,33 @@ os.chdir('/home/stir/exercises')
 #%% change directory to where the output files are
 os.chdir('working_folder/brain')
 #%% Read in images
+FBP=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('fbp_recon.hv'));
 EMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240.hv'));
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 OSEMPSF240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEMPSF_240.hv'));
 OSEM241=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_1.hv'));
 OSEM242=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_2.hv'));
 OSEM244=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_4.hv'));
+
+#%% bitmap display of images FBP vs EMML
+maxforplot=EMML240.max();
+# pick central slice
+slice=numpy.floor(EMML240.shape[0]/2);
+
+plt.figure();
+ax=plt.subplot(1,2,1);
+plt.imshow(EMML240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('EMML240');
+
+ax=plt.subplot(1,2,2);
+plt.imshow(FBP[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('FBP');
 
 #%% bitmap display of images EMML vs OSEM
 maxforplot=EMML240.max();
