@@ -7,6 +7,7 @@ The current script reads results from the simulation and displays them.
 Prerequisite:
 You should have executed the following on your command prompt
     ./run_simulation_brain.sh
+    ./run_reconstruction_brain.sh
 
 Author: Kris Thielemans
 """
@@ -99,14 +100,14 @@ plt.imshow(filteredEMML240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('filtered EMML240');
+ax.set_title('EMML240\nfiltered');
 
 ax=plt.subplot(1,3,2);
 plt.imshow(filteredOSEM240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('filteredOSEM240');
+ax.set_title('OSEM240\nfiltered');
 
 diff=filteredEMML240-filteredOSEM240;
 ax=plt.subplot(1,3,3);

@@ -7,7 +7,9 @@ The current script reads results from the simulation and displays them.
 Prerequisite:
 You should have executed the following on your command prompt
     ./run_simulation_brain.sh
-
+    ./run_reconstruction_brain.sh
+    ./run_reconstruction_brain_MAP.sh
+    
 Author: Kris Thielemans
 """
 #%% Initial imports
