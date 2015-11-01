@@ -5,3 +5,4 @@ cd working_folder/single_slice_SPECT
 ./simulate_data.sh emission.hv CTAC.hv template_sinogram.hs
 
 
+echo DONE

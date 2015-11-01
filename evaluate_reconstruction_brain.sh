@@ -7,3 +7,5 @@ cd working_folder/brain/
 ../../evaluate_reconstructions.sh
 
 cd ../..
+
+echo DONE

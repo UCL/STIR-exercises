@@ -13,6 +13,4 @@ cp ../GATE1/*s .
 cp ../*g1*v .
 endN=3 ATTEN_IMAGE=CTAC_g1.hv scatterpar=scatter_correction_350keV.par ./estimate_scatter.sh CTAC_g1.hv input_g1.hs scatter_template.hs my_acfs_g1.hs my_norm_g1.hs
  
-
-
-
+echo DONE

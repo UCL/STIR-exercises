@@ -19,3 +19,5 @@ stir_subtract OSEMPSF_diff.hv OSEMPSF_240.hv OSEM_240.hv
 
 echo start amide with display
 amide OSEMPSF_diff.hv  OSEMPSF_240.hv OSEM_240.hv&
+
+echo DONE

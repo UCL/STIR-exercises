@@ -25,3 +25,5 @@ OSSPS OSSPS_QuadraticPriorHigh.par > OSSPS_QP_High.log 2>&1
 
 echo "running OSSPS with PSF"
 OSSPS OSSPSPSF_QuadraticPrior.par > OSSPSPSF_QP.log 2>&1
+
+echo DONE

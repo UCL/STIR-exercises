@@ -44,3 +44,5 @@ OSMAPOSL EMMLcont.par > EMMLcont.log 2>&1
 
 echo filtering the end result
 postfilter filtered_OSEM_240.hv OSEM_240.hv postfilter_Gaussian.par > postfilter_OSEM.log 2>&1
+
+echo DONE

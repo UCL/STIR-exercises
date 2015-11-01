@@ -18,3 +18,4 @@ mv *g${g}.* GATE${g}/
 rm -f  *s  CTAC*v FDG*v
 done
 
+echo DONE

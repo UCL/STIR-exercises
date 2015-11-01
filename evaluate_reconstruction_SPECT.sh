@@ -7,3 +7,5 @@ cd working_folder/single_slice_SPECT
 ../../evaluate_reconstructions.sh
 
 cd ../..
+
+echo DONE

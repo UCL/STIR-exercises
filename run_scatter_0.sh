@@ -22,3 +22,4 @@ for g in 1 2 ; do
   cd ../../..
 done
 
+echo DONE

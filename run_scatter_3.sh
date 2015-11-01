@@ -24,3 +24,4 @@ for g in 1 2 ; do
 done
 
 
+echo DONE
