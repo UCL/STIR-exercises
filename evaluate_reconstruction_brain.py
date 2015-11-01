@@ -26,10 +26,6 @@ FBP=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('fbp_recon.hv'));
 EMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240.hv'));
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 OSEMPSF240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEMPSF_240.hv'));
-OSEM241=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_1.hv'));
-OSEM242=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_2.hv'));
-OSEM244=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_4.hv'));
-
 #%% bitmap display of images FBP vs EMML
 maxforplot=EMML240.max();
 # pick central slice
@@ -88,7 +84,21 @@ plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('EMML240','OSEM240'));
 
-#%% example of display over subiterations
+#%% example code for seeing evaluation over (sub)iterations with EMML and OSEM
+# The reconstruction script runs EMML and OSEM for 240 (sub)iterations, saving 
+# after every 24 (sub)iterations, i.e. image-updates.
+# We can see what the difference is between after one image-update, or for OSEM
+# after when full iteration (using all 8 subsets)
+#
+# First read in extra images
+OSEM241=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_1.hv'));
+OSEM242=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_2.hv'));
+OSEM248=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240_continued_8.hv'));
+EMML241=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240_continued_1.hv'));
+EMML242=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240_continued_2.hv'));
+EMML248=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240_continued_8.hv'));
+
+#%% bitmaps showing images and differences
 maxforplot=EMML240.max();
 
 # pick central slice
@@ -117,20 +127,40 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('diff');
 
-#%% Display central horizontal profiles through the image
+
+#%% Display central horizontal profiles through the image for EMML
 # pick central line
-row=numpy.floor(OSEM240.shape[1]/2);
+row=numpy.floor(EMML240.shape[1]/2);
 
 plt.figure()
+plt.subplot(1,2,1)
+plt.hold(True)
+plt.plot(EMML241[slice,row,:],'b');
+plt.plot(EMML240[slice,row,:],'c');
+plt.legend(('EMML241','EMML240'));
+
+plt.subplot(1,2,2)
+plt.hold(True);
+plt.plot((EMML241-EMML240)[slice,row,:],'b');
+plt.plot((EMML242-EMML241)[slice,row,:],'k');
+plt.plot((EMML248-EMML240)[slice,row,:],'r');
+plt.legend(('iter 241 - iter 240', 'iter 242 - iter 241', 'iter 248 - iter 240'));
+#%% Display central horizontal profiles through the image for OSEM
+
+plt.figure()
+plt.subplot(1,2,1)
 plt.hold(True)
 plt.plot(OSEM241[slice,row,:],'b');
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('OSEM241','OSEM240'));
 
-plt.figure()
+plt.subplot(1,2,2)
 plt.hold(True);
 plt.plot((OSEM241-OSEM240)[slice,row,:],'b');
 plt.plot((OSEM242-OSEM241)[slice,row,:],'k');
-plt.legend(('subiter 241 - subiter 240', 'subiter 242 - subiter 241'));
+plt.plot((OSEM248-OSEM240)[slice,row,:],'r');
+plt.legend(('subiter 241 - subiter 240', 
+    'subiter 242 - subiter 241', 'subiter 248 - subiter 240'));
+
 #%% close all plots
 plt.close('all')

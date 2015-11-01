@@ -33,11 +33,14 @@ OSMAPOSL OSEM.par > OSEM.log 2>&1
 echo filtering the end result
 postfilter filtered_OSEM_240.hv OSEM_240.hv postfilter_Gaussian.par > postfilter_OSEM.log 2>&1
 
-echo continue OSEM from 240 iterations onwards
+echo "continue OSEM from 240 sub-iterations onwards, saving every sub-iteration"
 OSMAPOSL OSEMcont.par > OSEMcont.log 2>&1
 
-echo running OSEM with PSF
-OSMAPOSL OSEMPSF.par > OSEMPSF.log 2>&1
+echo "continue EMML from 240 iterations onwards, saving every iteration"
+OSMAPOSL EMMLcont.par > EMMLcont.log 2>&1
+
+#echo running OSEM with PSF
+#OSMAPOSL OSEMPSF.par > OSEMPSF.log 2>&1
 
 echo filtering the end result
 postfilter filtered_OSEM_240.hv OSEM_240.hv postfilter_Gaussian.par > postfilter_OSEM.log 2>&1
