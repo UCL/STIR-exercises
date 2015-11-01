@@ -23,7 +23,7 @@ os.chdir('/home/stir/exercises')
 os.chdir('working_folder/brain')
 #%% Read in images
 # OSL_QP_240.hv is the output of the One Step Late algorithm with a Quadratic Prior, 240 subiterations
-# OSSPS_QP_240.hv is the output of the relaxes OSSPS algorithm with a Quadratic Prior, 240 subiterations
+# OSSPS_QP_240.hv is the output of the relaxed OSSPS algorithm with a Quadratic Prior, 240 subiterations
 # "High" means a 10 times higher penalty
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 OSLQP240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSL_QP_240.hv'));

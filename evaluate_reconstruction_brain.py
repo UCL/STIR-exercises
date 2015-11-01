@@ -25,7 +25,10 @@ os.chdir('working_folder/brain')
 FBP=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('fbp_recon.hv'));
 EMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240.hv'));
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
-OSEMPSF240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEMPSF_240.hv'));
+#OSEMPSF240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEMPSF_240.hv'));
+
+filteredEMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('filtered_EMML_240.hv'));
+filteredOSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('filtered_OSEM_240.hv'));
 #%% bitmap display of images FBP vs EMML
 maxforplot=EMML240.max();
 # pick central slice
@@ -83,6 +86,36 @@ plt.plot(EMML240[slice,row,:],'b');
 plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('EMML240','OSEM240'));
+
+#%% bitmap display of images EMML vs OSEM after postfiltering
+# note: check postfilter_Gaussian.par for parameters used for the postfilter
+maxforplot=filteredEMML240.max();
+# pick central slice
+slice=numpy.floor(EMML240.shape[0]/2);
+
+plt.figure();
+ax=plt.subplot(1,3,1);
+plt.imshow(filteredEMML240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('filtered EMML240');
+
+ax=plt.subplot(1,3,2);
+plt.imshow(filteredOSEM240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('filteredOSEM240');
+
+diff=filteredEMML240-filteredOSEM240;
+ax=plt.subplot(1,3,3);
+plt.imshow(diff[slice,:,:,]);
+plt.clim(-maxforplot/50,maxforplot/50)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('diff');
+
 
 #%% example code for seeing evaluation over (sub)iterations with EMML and OSEM
 # The reconstruction script runs EMML and OSEM for 240 (sub)iterations, saving 
