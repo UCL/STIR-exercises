@@ -40,7 +40,7 @@ OSMAPOSLParameters :=
 	; here comes the prior stuff
 	prior type := quadratic
 	  Quadratic Prior Parameters:=
-	    penalisation factor := .1
+	    penalisation factor := .005
 	  END Quadratic Prior Parameters:=
 
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
