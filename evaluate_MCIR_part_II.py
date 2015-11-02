@@ -29,7 +29,7 @@ Original=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_simulation/
 slice=numpy.floor(MCIR.shape[0]/2);
 plt.figure();
 
-maxforplot=MCIR.max();
+maxforplot=MCIR.max()/500;
 ax=plt.subplot(1,3,1);
 plt.imshow(MCIR[slice,:,:,]);
 plt.clim(0,maxforplot);
