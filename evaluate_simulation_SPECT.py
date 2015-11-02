@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Example script to serve as starting point for display the results of the brain simulation
+Example script to serve as starting point for display the results of the SPECT simulation
 
-The current script reads results from run_scatter0 and displays them comparing 
-with the truth (i.e. simulation input and simulation scatter output)
+You should have run
+    ./run_simulation_SPECT.sh
+    
+The current script reads results from the simulation and displays them
 
 Author: Kris Thielemans
 """
@@ -14,9 +16,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('/home/stir/stir-exercises')
-#%% run simulation (if you haven't done it yet)
-print(os.popen('./run_simulation_SPECT.sh').read())
+os.chdir('/home/stir/exercises')
 #%% change directory to where the output files are.
 os.chdir('working_folder/single_slice_SPECT')
 #%% Read in images
