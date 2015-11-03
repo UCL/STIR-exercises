@@ -66,7 +66,7 @@ plt.figure()
 ax=plt.subplot(1,3,1);
 plt.imshow(mean_randoms[slice,:,:,]);
 plt.clim(0,maxforplot)
-ax.set_title('mean of randoms');
+ax.set_title('mean of\nrandoms');
 plt.axis('off');
 plt.colorbar();
 
@@ -80,7 +80,7 @@ plt.colorbar();
 ax=plt.subplot(1,3,3);
 plt.imshow(estimated_randoms[slice,:,:,]);
 plt.clim(0,maxforplot);
-ax.set_title('estimated randoms');
+ax.set_title('estimated\nrandoms');
 plt.axis('off');
 plt.colorbar();
 
@@ -90,10 +90,14 @@ plt.hold(True)
 plt.plot(mean_singles,'b.-')
 plt.plot(estimated_singles,'g.-')
 plt.legend(('original singles','estimated singles'));
+plt.xlabel('detector number')
+plt.gca().set_title('singles');
+
 #%% Plot the ratio of the fansums with estimated
 plt.figure()
 plt.plot(fansums/estimated_singles,'r.-')
-plt.legend(('fansums / estimated'));
+plt.xlabel('detector number')
+plt.gca().set_title('fansums / estimated');
 
 #%% Extended exercise: set some singles to zero
 # Here we modify the mean of the singles (i.e. the simulation input)

@@ -63,19 +63,20 @@ maxforplot=org_image.max()*1.1;
 
 slice=10;
 plt.figure();
-plt.subplot(1,2,1);
+ax=plt.subplot(1,2,1);
 plt.imshow(org_image[slice,:,:,]);
 plt.colorbar();
 plt.clim(0,maxforplot);
-plt.set_title('input for simulation')
+ax.set_title('input for simulation')
 plt.axis('off');
 
-plt.subplot(1,2,2);
+ax=plt.subplot(1,2,2);
 plt.imshow(fbp_result[slice,:,:,]);
 plt.clim(0,maxforplot);
 plt.colorbar();
-plot.set_title('FBP after scatter correction')
+ax.set_title('FBP after scatter correction')
 plt.axis('off');
+
 #%% horizontal profiles through images
 plt.figure();
 plt.plot(org_image[10,154/2,:],'b');
