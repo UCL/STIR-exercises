@@ -25,8 +25,6 @@ import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
 os.chdir('/home/stir/exercises')
-#%% run scatter 0 case (if you haven't done it yet)
-print(os.popen('./run_scatter_0.sh').read())
 #%% change directory to where the output files are
 os.chdir('working_folder/GATE1')
 #%% read in data from GATE1
