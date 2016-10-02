@@ -1,0 +1,7 @@
+	STIR exercises
+	Copyright 2014-2016 Institute of Nuclear Medicine, University College London.
+	Copyright 2014-2015 University of Leeds
+
+	This product includes software developed at the Institute of Nuclear 
+	Medicine (http://www.ucl.ac.uk/medicine/nuclear-medicine).
+
