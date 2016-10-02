@@ -6,10 +6,8 @@ Please check the STIR web-site at http://STIR.sourceforge.net for more
 information.
 
 This repository contains exercises in Python to get you going
-with STIR. You can only use the exercises when you compiled
-STIR with its Python interface (via SWIG) enabled.
-
-Please check the exercises-document.docx for instructions.
+with STIR. Please check INSTALL.txt and 
+exercises-document.docx for instructions.
 
 Authors:
 Kris Thielemans
