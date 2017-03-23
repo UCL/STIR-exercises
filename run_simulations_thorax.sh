@@ -15,7 +15,7 @@ stir_math -s my_scatter_g${g} my_scatter.hs
 mkdir -p GATE$g
 rm -f *log my_zoomed* *.par *.sh
 mv *g${g}.* GATE${g}/
-rm -f  *s  CTAC*v FDG*v
+rm -f  *.s *.hs  CTAC*v FDG*v
 done
 
 echo DONE
