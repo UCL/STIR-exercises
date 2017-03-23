@@ -18,7 +18,8 @@ An easy way to run the exercises is to use the STIR Virtual Machine, but
 you can install all of this yourself of course.
 
 The current Python scripts assume that the exercises are installed
-in /home/stir/exercises. However, this location is only used at the
+in a sub-directory STIR-exercises of your home directory.
+However, this location is only used at the
 start of each script to go to the relevant directory. As long as 
 you change that initial line, you should be able to install
 the exercises anywhere you like.
