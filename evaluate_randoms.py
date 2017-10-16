@@ -22,7 +22,6 @@ import io
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
 os.chdir(os.getenv('STIR_exercises_PATH'))
-os.chdir('STIR-exercises')
 #%% change directory to where the output files are
 os.chdir('working_folder/randoms')
 #%% Define functions that read and write the .out files used by STIR
