@@ -16,7 +16,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir(os.path.expanduser('~'))
+os.chdir(os.getenv('STIR_exercises_PATH'))
 os.chdir('STIR-exercises')
 #%% change directory to where the output files are.
 os.chdir('working_folder/single_slice_SPECT')
