@@ -41,7 +41,7 @@ ax.set_title('attenuation image');
 # simulated data
 sinogram=to_numpy(stir.ProjData.read_from_file('my_sim.hs'));
 # after adding some noise
-noisy_sinogram=to_numpy(stir.ProjData.read_from_file('my_noise.hs'));
+noisy_sinogram=to_numpy(stir.ProjData.read_from_file('my_noisy_data.hs'));
 #%% Display bitmaps of a middle sinogram
 # When you compare this to PET sinograms, is the angle (theta) range the same? 
 # (open the header of a sinogram, e.g. my_sim.hs, to check what the range is for this 
