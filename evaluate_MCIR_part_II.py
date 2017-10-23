@@ -18,7 +18,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('getenv('STIR_exercises_PATH'))
+os.chdir(os.getenv('STIR_exercises_PATH'))
 #%% read in images
 MCIR=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('working_folder/MCIR/MCIR_64.hv'));
 avAC=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('working_folder/MCIR/avAC/MCIR_64.hv'));
