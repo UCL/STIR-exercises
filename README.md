@@ -290,7 +290,18 @@ Exercise 6: Image reconstruction part 2: adding Poisson noise
 
 (You will have to run the simulation and reconstruction scripts first.)
 
-We can make the simulation more realistic by adding noise to the data. An example would be
+We can make the simulation more realistic by adding noise to the data. In STIR, this
+can be done with the `poisson_noise` executable.
+
+Run `poisson_noise` in the terminal to understand what its arguments mean.
+```
+poisson_noise
+```
+We will do this by replacing the noiseless data with a Poisson noise realisation
+(after saving the noiseless data elsewhere), such that we can re-run reconstructions etc without
+editing files (at the expense if possibly creating some confusion though...).
+
+An example would be
 (please ***adjust the directory name to your case***, e.g. `working_folder/brain` or
 `working_folder/single_slice_SPECT`)
 ```
@@ -300,13 +311,25 @@ mkdir noiseless
 cp *.* noiseless
 # Generate Poisson noise (after scaling the data with a factor 0.5)
 poisson_noise -p my_prompts.hs noiseless/my_prompts.hs 0.5 1
+# We recommend that you then copy the new data to separate folder for later.
+mkdir noise_0.5
+cp my_prompts.* noise_0.5
 cd ../..
 ```
 For the SPECT exercise, replace `my_prompts.hs` in the text above with `my_sim.hs`.
 
-Run `poisson_noise` to understand what these arguments mean.
+*Warning*: in the above we have used the `-p` option to `poisson_noise`
+such that data and hence reconstructed images have the same scale. See [below
+for more information](#footnotepreservemean).
 
-As we overwrite the data, we can just use the same reconstruction and
+For your convenience, we provide scripts that do this for you with a
+specified scaling factor. So, all of the above can be replaced by
+```
+./run_generate_Poisson_thorax.sh 0.5
+```
+
+As mentioned above, as we overwrite the data, we can just
+use the same reconstruction and
 evaluation scripts as before (Exercise 5). An alternative would be to let
 `poisson_noise` create a new output file, adjust the reconstruction
 parameter files to use your new noisy data (input) and change the
@@ -316,21 +339,34 @@ If you want to "reset" to the noiseless case, you can of course copy the data
 in `noiseless` back:
 ```
 cd working_folder/single_slice
-# save noisy data
-mkdir noisy
-cp *.* noisy
+cp *.* noise_0.5
 # now copy back
 cp noiseless/* .
 cd ../..
 ```
 Note that if you want to try different noise levels, you have to make sure you
 are adding Poisson noise to the noiseless data, not to noisy data that you’ve
-created in a previous step.
+created in a previous step. This will be automatic if you follow the above
+procedure.
 
 Sample questions to address:
 
 -   Try different noise levels. Do the images change as you expected?
 -   Are the answers to the questions in Exercise 5 the same now that we added noise?
+
+
+*<a name="footnotepreservemean">Note on using the `-p` option of `poisson_noise`</a>:*
+
+Poisson noise is count dependent. To generate noisier data, you have to scale the
+data with a factor less than 1. This is somewhat inconvenient as it means that
+reconstructed images will have a different scale factor. When using the `-p`
+option, `poisson_noise` will first apply the scale factor, then generate a Poisson
+noise realisation, and then scale that data back to the original mean. This is
+somewhat dangerous, but it so happens that the Poisson log-likelihood just
+changes with an additive constant with this procedure, and therefore the
+reconstruction will still use the appropriate noise model. If this makes your
+head hurt, forget about it initially :wink:.
+
 
 Exercise 7: Image reconstruction part 3: MAP
 ============================================
