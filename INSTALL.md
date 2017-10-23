@@ -2,8 +2,9 @@ Installation instructions
 -------------------------
 Author: Kris Thielemans
 
-An easy way to run the exercises is to use the STIR Virtual Machine, but
-you can install all of this yourself of course. Below are some brief instructions.
+An easy way to run the exercises is to use the STIR Virtual Machine where
+all of this has been done for you, but you can install all of this yourself
+of course. Below are some brief instructions.
 
 
 
@@ -43,13 +44,38 @@ The STIR-exercises themselves don't need further installation. Just unpack them.
 
 Other utilities
 --------------
-We recommend that you run the exercises from in an interactive Python
-IDE such as spyder, so you will need to install that.
+### Spyder
 
-If you want to use AMIDE for display, it is convenient to add this to your
-PATH if it hasn't been done yet by its installer.
-Open a terminal and type something like this all on one line (adjust to where your files are).
-For instance on Cygwin
+We recommend that you run the exercises from in an interactive Python
+IDE such as [Spyder](https://pythonhosted.org/spyder/), so you will need to install that.
+On Ubuntu, the following should work
 ```
-PATH=/cygdrive/c/Program\\ Files\\ \\(x86\\)/amide/bin/:$PATH
+sudo apt-get update
+sudo apt-get install spyder
 ```
+We recommend to use iPython as it allows some "magic" commands making life easier. To get this
+into spyder, try
+```
+sudo apt-get install ipython ipython-qtconsole python-zmq
+```
+Or when using [Anaconda](https://www.anaconda.com/what-is-anaconda/), check
+[here for iPython](https://anaconda.org/anaconda/ipython) and
+[here for Spyder](https://anaconda.org/anaconda/spyder).
+
+### AMIDE
+
+The STIR exercises currently run from Python. If you prefer, you can use the (somewhat out-dated)
+command line scripts as well, for which you need to install [AMIDE](http://amide.sourceforge.net/)
+for display. Check its website for installation instructions, but on Ubuntu etc, the following
+might work
+```
+sudo apt-get install amide
+```
+
+On other systems, you might have to add it to your `PATH` if it hasn't been done yet by its installer.
+Open a terminal and type something like this all on one line before you start the exercises
+(adjust to where your files are)
+```
+PATH="/cygdrive/c/Program Files (x86)/amide/bin/:$PATH"
+```
+(the above line is for [Cygwin](http://cygwin.com]).
