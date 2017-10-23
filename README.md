@@ -163,7 +163,7 @@ The aim of the exercise is first to see how SPECT sinograms differ from PET.
 
 Read and run script:
 ```
-./run_simulations_SPECT.sh
+./run_simulation_SPECT.sh
 ```
 Output is in `working_folder/single_slice_SPECT`.
 
