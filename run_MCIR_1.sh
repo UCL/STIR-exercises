@@ -19,4 +19,7 @@ OSMAPOSL noMC.par > noMC.log  2>&1
 
 echo "output images are called noMC_16.hv etc (located in `pwd`)"
 
-# you could now rerun OSMAPOSL by editing noMC.par and changing some parameters
+echo "you could now rerun OSMAPOSL by editing noMC.par and changing some parameters"
+
+echo "Done"
+

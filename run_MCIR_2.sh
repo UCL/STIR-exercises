@@ -20,5 +20,8 @@ OSMAPOSL MCIR.par > MCIR.log  2>&1
 
 echo "output images are called MCIR_16.hv etc (located in `pwd`)"
 
-# you could now rerun OSMAPOSL by editing MCIR.par and changing some parameters
+echo "you could now rerun OSMAPOSL by editing MCIR.par and changing some parameters"
+
+echo "Done"
+
 
