@@ -4,7 +4,7 @@
 
 cd working_folder/single_slice_SPECT
 
-../../evaluate_reconstructions.sh
+../../old_evaluation_scripts/evaluate_reconstructions.sh
 
 cd ../..
 

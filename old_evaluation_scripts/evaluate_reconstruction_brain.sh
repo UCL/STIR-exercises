@@ -4,7 +4,7 @@
 
 cd working_folder/brain/
 
-../../evaluate_reconstructions.sh
+../../old_evaluation_scripts/evaluate_reconstructions.sh
 
 cd ../..
 
