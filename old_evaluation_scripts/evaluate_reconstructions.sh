@@ -14,10 +14,13 @@ stir_subtract OSEM_diff.hv OSEM_240_continued_1.hv OSEM_240_continued_4.hv
 echo start amide with display
 amide OSEM_diff.hv OSEM_240_continued_1.hv OSEM_240_continued_4.hv&
 
-echo subtract images OSEM with and without PSF images
-stir_subtract OSEMPSF_diff.hv OSEMPSF_240.hv OSEM_240.hv
+if test -r OSEMPSF_240.hv
+then
+    echo subtract images OSEM with and without PSF images
+    stir_subtract OSEMPSF_diff.hv OSEMPSF_240.hv OSEM_240.hv
 
-echo start amide with display
-amide OSEMPSF_diff.hv  OSEMPSF_240.hv OSEM_240.hv&
+    echo start amide with display
+    amide OSEMPSF_diff.hv  OSEMPSF_240.hv OSEM_240.hv&
+fi
 
 echo DONE
