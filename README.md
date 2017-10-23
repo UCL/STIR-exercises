@@ -575,6 +575,13 @@ affect image reconstruction? (Part I)
 
 Exercise 11: Image reconstruction part 4: PSF and MAP
 =====================================================
+We will now look at OSEM and OSSPS (with a Quadratic Prior) when PSF modelling is
+included in the reconstruction.
+We recommend to do this for SPECT as at present,
+STIR PSF modelling is PET is hard to modify. (Scripts are provided to run the
+PSF reconstructions for you for the brain and thorax PET case as well.
+If you are brave, you can check the `.par` files and modify the image-based PSF
+modelling as well).
 
 This exercise needs results from exercises 5 and 7. So, you should already have done
 the following steps:
@@ -584,9 +591,8 @@ the following steps:
 ./run_reconstruction_SPECT.sh
 ./run_reconstruction_SPECT_MAP.sh
 ```
-We will now look at OSEM and OSSPS (with a Quadratic Prior) when PSF modelling is
-included in the reconstruction. We will only do this for SPECT as at present,
-STIR PSF modelling is PET is hard to modify. A script is provided to generate results
+
+A script is provided to generate results
 ```
 ./run_reconstruction_SPECT_PSF.sh
 ```
