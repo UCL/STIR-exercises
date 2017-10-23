@@ -30,12 +30,12 @@ OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 
 filteredEMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('filtered_EMML_240.hv'));
 filteredOSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('filtered_OSEM_240.hv'));
-#%% bitmap display of images FBP vs EMML
+#%% find max and slice number for plots
 maxforplot=EMML240.max();
 # pick central slice
-slice=numpy.floor(EMML240.shape[0]/2);
-
-plt.figure();
+slice=numpy.int(EMML240.shape[0]/2);
+#%% bitmap display of images FBP vs EMML
+fig=plt.figure();
 ax=plt.subplot(1,2,1);
 plt.imshow(EMML240[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -50,12 +50,9 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('FBP');
 
+fig.savefig('EMML_vs_FBP.png')
 #%% bitmap display of images EMML vs OSEM
-maxforplot=EMML240.max();
-# pick central slice
-slice=numpy.floor(EMML240.shape[0]/2);
-
-plt.figure();
+fig=plt.figure();
 ax=plt.subplot(1,3,1);
 plt.imshow(EMML240[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -78,23 +75,25 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('diff');
 
+fig.savefig('EMML_vs_OSEM_bitmaps.png')
 #%% Display central horizontal profiles through the image
 # pick central line
-row=numpy.floor(OSEM240.shape[1]/2);
+row=numpy.int(OSEM240.shape[1]/2);
 
-plt.figure()
+fig=plt.figure()
 plt.plot(EMML240[slice,row,:],'b');
 plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('EMML240','OSEM240'));
 
+fig.savefig('EMM_vs_OSEM_profiles.png')
 #%% bitmap display of images EMML vs OSEM after postfiltering
 # note: check postfilter_Gaussian.par for parameters used for the postfilter
 maxforplot=filteredEMML240.max();
 # pick central slice
-slice=numpy.floor(EMML240.shape[0]/2);
+slice=numpy.int(EMML240.shape[0]/2);
 
-plt.figure();
+fig=plt.figure();
 ax=plt.subplot(1,3,1);
 plt.imshow(filteredEMML240[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -117,7 +116,7 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('diff');
 
-
+fig.savefig('EMML_vs_OSEM_postfiltered_bitmaps.png')
 #%% example code for seeing evaluation over (sub)iterations with EMML and OSEM
 # The reconstruction script runs EMML and OSEM for 240 (sub)iterations, saving 
 # after every 24 (sub)iterations, i.e. image-updates.
@@ -136,9 +135,9 @@ EMML248=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240_contin
 maxforplot=EMML240.max();
 
 # pick central slice
-slice=numpy.floor(EMML240.shape[0]/2);
+slice=numpy.int(EMML240.shape[0]/2);
 
-plt.figure();
+fig=plt.figure();
 ax=plt.subplot(1,3,1);
 plt.imshow(OSEM240[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -161,12 +160,12 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('diff');
 
-
+fig.savefig('EMML_vs_OSEM_update_bitmaps.png')
 #%% Display central horizontal profiles through the image for EMML
 # pick central line
-row=numpy.floor(EMML240.shape[1]/2);
+row=numpy.int(EMML240.shape[1]/2);
 
-plt.figure()
+fig=plt.figure()
 plt.subplot(1,2,1)
 plt.hold(True)
 plt.plot(EMML241[slice,row,:],'b');
@@ -181,7 +180,7 @@ plt.plot((EMML248-EMML240)[slice,row,:],'r');
 plt.legend(('iter 241 - iter 240', 'iter 242 - iter 241', 'iter 248 - iter 240'));
 #%% Display central horizontal profiles through the image for OSEM
 
-plt.figure()
+fig=plt.figure()
 plt.subplot(1,2,1)
 plt.hold(True)
 plt.plot(OSEM241[slice,row,:],'b');

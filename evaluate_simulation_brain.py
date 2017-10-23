@@ -26,7 +26,7 @@ image=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('emission.hv'));
 mu_map=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('attenuation.hv'));
 #%% bitmap display of images
 slice=7;
-plt.figure();
+fig=plt.figure();
 ax=plt.subplot(1,2,1);
 plt.imshow(image[slice,:,:,]);
 plt.colorbar();
@@ -39,6 +39,8 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('attenuation image');
 
+fig.savefig('input_images.png')
+
 #%% read in sinograms
 # prompts (i.e. all counts) including trues and randoms)
 prompts=to_numpy(stir.ProjData.read_from_file('my_prompts.hs'));
@@ -48,7 +50,7 @@ scatter=to_numpy(stir.ProjData.read_from_file('my_scatter.hs'));
 randoms=to_numpy(stir.ProjData.read_from_file('my_randoms.hs'));
 #%% Display bitmaps of a middle sinogram
 # Note that scatter is zero in this brain simulation
-plt.figure()
+fig=plt.figure()
 ax=plt.subplot(1,3,1);
 plt.imshow(prompts[5,:,:,]);
 plt.clim(0,prompts.max())
@@ -69,13 +71,19 @@ plt.clim(0,randoms.max());
 ax.set_title('randoms');
 plt.axis('off');
 plt.colorbar()
+
+fig.savefig('sinogram_bitmaps.png')
+
 #%% Display central horizontal profiles through the sinogram
-plt.figure()
+fig=plt.figure()
 plt.hold(True)
 plt.plot(prompts[5,64/2,:],'b');
 plt.plot(scatter[5,64/2,:],'c');
 plt.plot((scatter+randoms)[5,64/2,:],'g');
 plt.legend(('prompts','scatter', 'scatter+randoms'));
+
+fig.savefig('sinogram_profiles.png')
+
 #%%  Display some different views in an a movie
 import matplotlib.animation as animation
 bitmaps=[]

@@ -25,9 +25,9 @@ Original=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_simulation/
 
 #%% bitmap display of images
 # pick central slice
-slice=numpy.floor(Original.shape[0]/2);
+slice=numpy.int(Original.shape[0]/2);
 
-plt.figure();
+fig=plt.figure();
 maxforplot=Original.max()/2;
 ax=plt.subplot(1,3,1);
 plt.imshow(Original[slice,:,:,]);
@@ -51,8 +51,10 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('noMC');
 
+fig.savefig('MCIR_vs_noMC_bitmaps.png')
 #%% Display difference image
 diff=MCIR-noMC;
+fig=plt.figure()
 ax=plt.subplot(1,1,1);
 plt.imshow(diff[slice,:,:,]);
 plt.clim(-maxforplot/50,maxforplot/50)
@@ -60,11 +62,12 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('diff');
 
+fig.savefig('MCIR_vs_noMC_diff_bitmap.png')
 #%% Display central horizontal profiles through the image
 # pick a line close to central line
-row=numpy.floor(MCIR.shape[1]/2+3);
+row=numpy.int(MCIR.shape[1]/2+3);
 
-plt.figure()
+fig=plt.figure()
 plt.plot(MCIR[slice,row,:],'b');
 plt.hold(True)
 plt.plot(noMC[slice,row,:],'c');
@@ -83,7 +86,7 @@ BackwardMotion_Z=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_mot
 maxforplot=ForwardMotion_Z.max();
 
 # pick central slice
-slice=numpy.floor(ForwardMotion_X.shape[0]/2);
+slice=numpy.int(ForwardMotion_X.shape[0]/2);
 
 plt.figure();
 ax=plt.subplot(1,3,1);
@@ -111,7 +114,7 @@ ax.set_title('Forward_Z');
 maxforplot=BackwardMotion_Z.max();
 
 # pick central slice
-slice=numpy.floor(BackwardMotion_X.shape[0]/2);
+slice=numpy.int(BackwardMotion_X.shape[0]/2);
 
 plt.figure();
 ax=plt.subplot(1,3,1);

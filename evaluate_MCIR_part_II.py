@@ -26,8 +26,8 @@ g1AC=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('working_folder/MCI
 Original=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_simulation/FDG_g1.hv'));
 #%% bitmap display of images
 # pick central slice
-slice=numpy.floor(MCIR.shape[0]/2);
-plt.figure();
+slice=numpy.int(MCIR.shape[0]/2);
+fig=plt.figure();
 
 maxforplot=MCIR.max()/500;
 ax=plt.subplot(1,3,1);
@@ -51,8 +51,9 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('Gate1-AC');
 
+fig.savefig('MCIR_with_atten_mismatch_bitmaps.png')
 #%% Display difference images
-plt.figure();
+fig=plt.figure();
 diff1=Original-MCIR;
 ax=plt.subplot(1,3,1);
 plt.imshow(diff1[slice,:,:,]);
@@ -77,11 +78,13 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('g1AC Diff');
 
+fig.savefig('MCIR_with_atten_mismatch_diff_bitmaps.png')
+
 #%% Display central horizontal profiles through the image
 # pick a line close to central line
-row=numpy.floor(MCIR.shape[1]/2+3);
+row=numpy.int(MCIR.shape[1]/2+3);
 
-plt.figure()
+fig=plt.figure()
 plt.plot(MCIR[slice,row,:],'b');
 plt.hold(True)
 plt.plot(avAC[slice,row,:],'c');

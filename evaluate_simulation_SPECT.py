@@ -24,7 +24,7 @@ image=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('emission.hv'));
 mu_map=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('CTAC.hv'));
 #%% bitmap display of images
 slice=0;
-plt.figure();
+fig=plt.figure();
 ax=plt.subplot(1,2,1);
 plt.imshow(image[slice,:,:,]);
 plt.colorbar();
@@ -36,6 +36,8 @@ plt.imshow(mu_map[slice,:,:,]);
 plt.colorbar();
 plt.axis('off');
 ax.set_title('attenuation image');
+
+fig.savefig('input_images.png')
 
 #%% read in sinograms
 # simulated data
@@ -49,7 +51,7 @@ noisy_sinogram=to_numpy(stir.ProjData.read_from_file('my_noisy_data.hs'));
 maxforplot=sinogram.max();
 
 slice=0; # single sinogram only, but returned as a 3D array
-plt.figure()
+fig=plt.figure()
 ax=plt.subplot(1,2,1);
 plt.imshow(sinogram[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -60,13 +62,19 @@ ax=plt.subplot(1,2,2);
 plt.imshow(noisy_sinogram[slice,:,:,]);
 plt.clim(0,maxforplot);
 ax.set_title('noisy');
+
+fig.savefig('sinogram_bitmaps.png')
+
 plt.axis('off');
 #%% Display central horizontal profiles through the sinogram
-plt.figure()
+fig=plt.figure()
 plt.plot(sinogram[slice,128/2,:],'b');
 plt.hold(True)
 plt.plot(noisy_sinogram[slice,128/2,:],'c');
 plt.legend(('simulation','with added noise'));
+
+fig.savefig('sinogram_profiles.png')
+
 #%% What to do now?
 # - make a copy of the files to a new directory
 #  and edit the new forward_projector_SPECT.par to change PSF parameters

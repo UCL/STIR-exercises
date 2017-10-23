@@ -32,12 +32,12 @@ OSSPSQP240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSSPS_QP_240
 OSEMPSF240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEMPSF_240.hv'));
 OSSPSPSFQP240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSSPSPSF_QP_240.hv'));
 
-#%% bitmap display of images OSEM vs OSL vs OSSPS
+#%% find max and slice number
 maxforplot=OSEMPSF240.max();
 # pick central slice
-slice=numpy.floor(OSEM240.shape[0]/2);
-
-plt.figure();
+slice=numpy.int(OSEM240.shape[0]/2);
+#%% bitmap display of images OSEM vs OSL vs OSSPS
+fig=plt.figure();
 ax=plt.subplot(2,2,1);
 plt.imshow(OSEM240[slice,:,:,]);
 plt.clim(0,maxforplot)
@@ -67,8 +67,10 @@ plt.colorbar();
 plt.axis('off');
 ax.set_title('OSSPS with PSF');
 
+
+plt.savefig('PSF_bitmaps.png')
 #%% Display horizontal profiles through lesion
-plt.figure()
+fig=plt.figure()
 row=67;
 plt.hold(True)
 plt.plot(ground_truth_image[slice,row,:],'r');
@@ -77,3 +79,5 @@ plt.plot(OSSPSQP240[slice,row,:],'c');
 plt.plot(OSEMPSF240[slice,row,:],'m.-');
 plt.plot(OSSPSPSFQP240[slice,row,:],'g.-');
 plt.legend(('ground truth','OSEM240','OSSPS', 'OSEM with PSF', 'OSSPS with PSF'));
+
+plt.savefig('PSF_profiles.png')
