@@ -30,14 +30,16 @@ os.chdir('working_folder/brain')
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 OSLQP240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSL_QP_240.hv'));
 OSSPSQP240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSSPS_QP_240.hv'));
+OSLQPLow240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSL_QP_Low_240.hv'));
+OSSPSQPLow240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSSPS_QP_Low_240.hv'));
 OSLQPHigh240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSL_QP_High_240.hv'));
 OSSPSQPHigh240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSSPS_QP_High_240.hv'));
 
 #%% bitmap display of images OSEM vs OSL vs OSSPS
 maxforplot=OSEM240.max();
 # pick central slice
-slice=numpy.floor(OSEM240.shape[0]/2);
-
+slice=numpy.int(OSEM240.shape[0]/2);
+#%%
 plt.figure();
 ax=plt.subplot(1,4,1);
 plt.imshow(OSEM240[slice,:,:,]);
@@ -72,19 +74,38 @@ ax.set_title('OSL - OSSPS');
 #%% Display central horizontal profiles through the image
 plt.figure()
 # pick central line
-row=numpy.floor(OSEM240.shape[1]/2);
+row=numpy.int(OSEM240.shape[1]/2);
 plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'b');
 plt.plot(OSLQP240[slice,row,:],'c');
 plt.plot(OSSPSQP240[slice,row,:],'r');
 plt.legend(('OSEM240','OSL','OSSPS'));
 
-#%% bitmap display of images for high penalty
-# This might be surprising. What happened here?
+#%% bitmap display of OSSPS images for different penalties
+fig=plt.figure();
+ax=plt.subplot(1,3,1);
+plt.imshow(OSSPSQPLow240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('Low penalty');
 
-maxforplot=OSEM240.max();
-# pick central slice
-slice=numpy.floor(OSEM240.shape[0]/2);
+ax=plt.subplot(1,3,2);
+plt.imshow(OSSPSQP240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('Medium penalty');
+
+ax=plt.subplot(1,3,3);
+plt.imshow(OSSPSQPHigh240[slice,:,:,]);
+plt.clim(0,maxforplot)
+plt.colorbar();
+plt.axis('off');
+ax.set_title('High penalty');
+
+#%% bitmap display of OSL vs OSSPS images for high penalty
+# This might be surprising. What happened here?
 
 plt.figure();
 ax=plt.subplot(1,2,1);
@@ -92,11 +113,11 @@ plt.imshow(OSLQPHigh240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('OSL');
+ax.set_title('OSL high penalty');
 
 ax=plt.subplot(1,2,2);
 plt.imshow(OSSPSQPHigh240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.colorbar();
 plt.axis('off');
-ax.set_title('OSSPS');
+ax.set_title('OSSPS high penalty');
