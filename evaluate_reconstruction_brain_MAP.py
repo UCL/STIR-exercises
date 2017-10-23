@@ -20,7 +20,7 @@ from stirextra import *
 import os
 #%% go to directory with input files
 # adapt this path to your situation (or start everything in the exercises directory)
-os.chdir('getenv('STIR_exercises_PATH'))
+os.chdir(getenv('STIR_exercises_PATH'))
 #%% change directory to where the output files are
 os.chdir('working_folder/brain')
 #%% Read in images
