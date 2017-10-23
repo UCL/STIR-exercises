@@ -99,7 +99,7 @@ Open the file `~/devel/STIR-exercises/evaluate_simulation_brain.py` in Spyder (o
 the path if you installed the exercises elsewhere). You can do this via its menus, or by
 typing in the terminal:
 ```
-spyder evaluate_simulation_brain.py
+spyder evaluate_simulation_brain.py&
 ```
 Command line evaluation
 -----------------------
@@ -119,12 +119,11 @@ cd ../..
 We can also extract profiles through the sinogram to display these in Excel or GNUmeric
 or similar. An example of this is given in the script
 ```
-./evaluate_simulation_brain.sh
+old_evaluation_scripts/evaluate_simulation_brain.sh
 ```
 which will extract the segments and create profile text files for you. Output files will be
 
-`working_folder/brain/profile_prompts.txt`
-
+`working_folder/brain/profile_prompts.txt` and
 `working_folder/brain/profile_randoms.txt`
 
 Exercise 2: Data Simulation Thorax with PET
@@ -147,15 +146,15 @@ Python evaluation
 -----------------
 
 Start spyder with the evaluation script
-
+```
 spyder evaluate_simulation_thorax.py&
-
-or if spyder is running, just open the file.
+```
+or if Spyder is running, just open the file.
 
 Exercise 3: Data Simulation Thorax with SPECT
 =============================================
 
-(Always run scripts from the STIR`-exercises` directory)
+(Always run scripts from the `STIR-exercises` directory)
 
 This is a simple simulation of single slice of a thorax phantom for SPECT.
 PSF is incorporated. Scatter is set to zero.
@@ -208,7 +207,7 @@ cd ..
 ```
 We can also extract profiles through the sinogram to display these in Excel or similar. You could run
 ```
-./evaluate_simulation_thorax.sh
+old_evaluation_scripts/evaluate_simulation_thorax.sh
 ```
 to extract the segments and create profiles for you.
 
@@ -279,7 +278,7 @@ Command line evaluation
 
 Run
 ```
-./evaluate_reconstruction_brain.sh
+old_evaluation_scripts/evaluate_reconstruction_brain.sh
 ```
 (or choose `evaluate_reconstruction_thorax.sh` or `evaluate_reconstruction_SPECT.sh`).
 
