@@ -1,6 +1,5 @@
 #! /bin/sh -e
 
-mkdir -p working_folder
 mkdir -p working_folder/brain
 cp EX_brain/* working_folder/brain
 cd working_folder/brain
