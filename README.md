@@ -310,9 +310,16 @@ We will do this by replacing the noiseless data with a Poisson noise realisation
 (after saving the noiseless data elsewhere), such that we can re-run reconstructions etc without
 editing files (at the expense if possibly creating some confusion though...).
 
-An example would be
-(please ***adjust the directory name to your case***, e.g. `working_folder/brain` or
-`working_folder/single_slice_SPECT`)
+For your convenience, we provide scripts that do this for you with a
+specified scaling factor (a smaller scaling factor means higher noise). For example: 
+```
+./run_generate_Poisson_thorax.sh 0.5
+```
+*Warning*: in these scripts we have used the `-p` option to `poisson_noise`
+such that data and hence reconstructed images have the same scale. See [below
+for more information](#footnotepreservemean).
+
+This script does something like this
 ```
 cd working_folder/single_slice
 # save noiseless data results in a subfolder
@@ -320,22 +327,12 @@ mkdir noiseless
 cp *.* noiseless
 # Generate Poisson noise (after scaling the data with a factor 0.5)
 poisson_noise -p my_prompts.hs noiseless/my_prompts.hs 0.5 1
-# We recommend that you then copy the new data to separate folder for later.
+# Copy the new data to a separate folder for later.
 mkdir noise_0.5
 cp my_prompts.* noise_0.5
 cd ../..
 ```
-For the SPECT exercise, replace `my_prompts.hs` in the text above with `my_sim.hs`.
 
-*Warning*: in the above we have used the `-p` option to `poisson_noise`
-such that data and hence reconstructed images have the same scale. See [below
-for more information](#footnotepreservemean).
-
-For your convenience, we provide scripts that do this for you with a
-specified scaling factor. So, all of the above can be replaced by
-```
-./run_generate_Poisson_thorax.sh 0.5
-```
 
 As mentioned above, as we overwrite the data, we can just
 use the same reconstruction and
