@@ -78,8 +78,6 @@ fig.savefig('sinogram_profiles.png')
 #%% What to do now?
 # - make a copy of the files to a new directory
 #  and edit the new forward_projector_SPECT.par to change PSF parameters
-#  and/or simulate_data.sh to change the amount of noise
-# (run poisson_noise without arguments to get a usage message)
 #  Then simulate again via the command
 #    ./simulate_data.sh emission.hv CTAC.hv template_sinogram.hs
 #%% close all plots
