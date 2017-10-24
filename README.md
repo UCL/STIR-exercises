@@ -77,6 +77,15 @@ The shell scripts `*.sh` should all write `DONE` or `Done` at the end. If they d
 something went wrong. Check the log files (`*.log`) in the output directory
 for the script that failed.
 
+**Note:**
+
+Some of the reconstruction scripts might take a while depending on your machine. You could
+also run all the scripts that generate data beforehand, and run the evaluation scripts afterwards.
+```
+cd $STIR_exercises_PATH
+./run_all.sh
+```
+
 Exercise 1: Brain Data Simulation
 =================================
 
@@ -339,12 +348,16 @@ If you want to "reset" to the noiseless case, you can of course copy the data
 in `noiseless` back:
 ```
 cd working_folder/single_slice
-cp *.* noise_0.5
-# now copy back
 cp noiseless/* .
 cd ../..
 ```
-Note that if you want to try different noise levels, you have to make sure you
+*Note:* If you have used the `run_all.sh` scripts, it already ran
+all reconstructions for a few different noise levels. The results are stored
+in sub-directories `noise_0.5`, `noise_1` etc. You could either run the evaluation
+in the sub-directory (e.g. by editing the `os.chdir` line at the start), or
+copy the data one level up as illustrated above.
+
+*Note:* If you want to try different noise levels, you have to make sure you
 are adding Poisson noise to the noiseless data, not to noisy data that you’ve
 created in a previous step. This will be automatic if you follow the above
 procedure.
