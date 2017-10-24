@@ -40,6 +40,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "===  add noise"
-poisson_noise my_noisy_data.hs my_sim.hs .1 1
+poisson_noise my_noisy_data.hs my_sim.hs 1 1
 
 echo "Done creating simulated data"
