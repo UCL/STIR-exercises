@@ -69,7 +69,7 @@ row=numpy.int(MCIR.shape[1]/2+3);
 
 fig=plt.figure()
 plt.plot(MCIR[slice,row,:],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(noMC[slice,row,:],'c');
 plt.legend(('MCIR','noMC'));
 

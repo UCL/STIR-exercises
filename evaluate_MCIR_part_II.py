@@ -86,9 +86,8 @@ row=numpy.int(MCIR.shape[1]/2+3);
 
 fig=plt.figure()
 plt.plot(MCIR[slice,row,:],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(avAC[slice,row,:],'c');
-plt.hold(True)
 plt.plot(g1AC[slice,row,:],'r');
 plt.legend(('MCIR','avAC','g1AC'));
 
