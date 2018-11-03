@@ -75,7 +75,7 @@ ax.set_title('OSL - OSSPS');
 plt.figure()
 # pick central line
 row=numpy.int(OSEM240.shape[1]/2);
-plt.hold(True)
+#plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'b');
 plt.plot(OSLQP240[slice,row,:],'c');
 plt.plot(OSSPSQP240[slice,row,:],'r');

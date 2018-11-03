@@ -76,7 +76,7 @@ fig.savefig('sinogram_bitmaps.png')
 
 #%% Display central horizontal profiles through the sinogram
 fig=plt.figure()
-plt.hold(True)
+#plt.hold(True)
 plt.plot(prompts[5,64/2,:],'b');
 plt.plot(scatter[5,64/2,:],'c');
 plt.plot((scatter+randoms)[5,64/2,:],'g');

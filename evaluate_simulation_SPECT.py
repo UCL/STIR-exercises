@@ -69,7 +69,7 @@ plt.axis('off');
 #%% Display central horizontal profiles through the sinogram
 fig=plt.figure()
 plt.plot(sinogram[slice,128/2,:],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(noisy_sinogram[slice,128/2,:],'c');
 plt.legend(('simulation','with added noise'));
 

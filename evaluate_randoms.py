@@ -86,7 +86,7 @@ plt.colorbar();
 
 #%% plot singles themselves
 plt.figure()
-plt.hold(True)
+#plt.hold(True)
 plt.plot(mean_singles,'b.-')
 plt.plot(estimated_singles,'g.-')
 plt.legend(('original singles','estimated singles'));

@@ -50,7 +50,7 @@ plt.axis('off');
 #%% Display central profiles through the sinogram
 plt.figure()
 plt.plot(org_scatter[10,:,192/2],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(estimated_scatter[10,:,192/2],'c');
 plt.legend(('original','estimated'));
 #%% Read in images
@@ -78,7 +78,7 @@ plt.axis('off');
 #%% horizontal profiles through images
 plt.figure();
 plt.plot(org_image[10,154/2,:],'b');
-plt.hold(True);
+#plt.hold(True);
 plt.plot(fbp_result[10,154/2,:],'c');
 plt.legend(('Input for simulation','Reconstruction'));
 #%% close all plots

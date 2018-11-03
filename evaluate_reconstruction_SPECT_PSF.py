@@ -72,7 +72,7 @@ plt.savefig('PSF_bitmaps.png')
 #%% Display horizontal profiles through lesion
 fig=plt.figure()
 row=67;
-plt.hold(True)
+#plt.hold(True)
 plt.plot(ground_truth_image[slice,row,:],'r');
 plt.plot(OSEM240[slice,row,:],'b');
 plt.plot(OSSPSQP240[slice,row,:],'c');

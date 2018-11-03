@@ -82,7 +82,7 @@ row=numpy.int(OSEM240.shape[1]/2);
 
 fig=plt.figure()
 plt.plot(EMML240[slice,row,:],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('EMML240','OSEM240'));
 
@@ -167,13 +167,13 @@ row=numpy.int(EMML240.shape[1]/2);
 
 fig=plt.figure()
 plt.subplot(1,2,1)
-plt.hold(True)
+#plt.hold(True)
 plt.plot(EMML241[slice,row,:],'b');
 plt.plot(EMML240[slice,row,:],'c');
 plt.legend(('EMML241','EMML240'));
 
 plt.subplot(1,2,2)
-plt.hold(True);
+#plt.hold(True);
 plt.plot((EMML241-EMML240)[slice,row,:],'b');
 plt.plot((EMML242-EMML241)[slice,row,:],'k');
 plt.plot((EMML248-EMML240)[slice,row,:],'r');
@@ -182,13 +182,13 @@ plt.legend(('iter 241 - iter 240', 'iter 242 - iter 241', 'iter 248 - iter 240')
 
 fig=plt.figure()
 plt.subplot(1,2,1)
-plt.hold(True)
+#plt.hold(True)
 plt.plot(OSEM241[slice,row,:],'b');
 plt.plot(OSEM240[slice,row,:],'c');
 plt.legend(('OSEM241','OSEM240'));
 
 plt.subplot(1,2,2)
-plt.hold(True);
+#plt.hold(True);
 plt.plot((OSEM241-OSEM240)[slice,row,:],'b');
 plt.plot((OSEM242-OSEM241)[slice,row,:],'k');
 plt.plot((OSEM248-OSEM240)[slice,row,:],'r');

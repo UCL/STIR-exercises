@@ -61,7 +61,7 @@ ax.set_title('incorrect CTAC')
 #%% horizontal profiles through CTACs
 plt.figure();
 plt.plot(correctCTAC[10,154/2,:],'b');
-plt.hold(True);
+#plt.hold(True);
 plt.plot(wrongCTAC[10,154/2,:],'c');
 plt.legend(('Input for simulation','FBP (correct AC)', 'FBP (incorrect AC)'));
 plt.legend(('correct CTAC', 'incorrect CTAC'));
@@ -90,7 +90,7 @@ plt.axis('off');
 #%% Display central profiles through the sinogram
 plt.figure()
 plt.plot(org_scatter[10,:,192/2],'b');
-plt.hold(True)
+#plt.hold(True)
 plt.plot(estimated_scatter_run0[10,:,192/2],'c');
 plt.plot(estimated_scatter_run3[10,:,192/2],'r');
 plt.legend(('original','estimated (correct CTAC)','estimated (incorrect CTAC)'));
@@ -128,7 +128,7 @@ ax.set_title('FBP\n(incorrect CTAC)')
 #%% horizontal profiles through images
 plt.figure();
 plt.plot(org_image[10,154/2,:],'b');
-plt.hold(True);
+#plt.hold(True);
 plt.plot(fbp_result_run0[10,154/2,:],'c');
 plt.plot(fbp_result_run3[10,154/2,:],'k');
 plt.legend(('Input for simulation','FBP (correct AC)', 'FBP (incorrect AC)'));
