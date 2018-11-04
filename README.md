@@ -219,6 +219,15 @@ old_evaluation_scripts/evaluate_simulation_thorax.sh
 ```
 to extract the segments and create profiles for you.
 
+Optional exercise 1: Simulation in Python
+=========================================
+As opposed to using scripts and parameter files, you can use STIR
+classes directly in Python as well of course. This exercise shows you
+how to use forward and backprojection, construct simple images etc.
+```
+spyder projection_demo.py&
+```
+
 Exercise 4: Preparation for Image reconstruction exercise
 =========================================================
 
