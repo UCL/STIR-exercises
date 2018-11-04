@@ -55,7 +55,6 @@ display. ImageJ would work as well (see the end of the document).
 See the appendices at the end of this document for some information to get started.
 ***Please read this before the course.***
 
-
 Start of exercises
 ==================
 
@@ -791,6 +790,38 @@ to what you would use in the terminal. (*Note*: these commands do not work in a 
 ```python
     %reset
 ```
+
+Getting help within Python
+==========================
+Most classes/function will have some documentation. You can access this
+via normal Python mechanisms.
+
+```python
+# use the class name
+help(stir.Scanner)
+# or you can use an object
+scanner=stir.Scanner(...)
+help(scanner)
+# help for a single method
+help(scanner.get_max_num_views)
+```
+When using ipython, you can also get the main class documentation (without
+methods) by using
+```python
+? stir.Scanner
+```
+
+Finally, many STIR classes have a `parameter_info` method that returns a
+string with all parameters. This is useful to get an overview, but
+this can also be saved to file to serve as a parameter file later on.
+```python
+print(scanner.parameter_info())
+```
+
+***Note***: The inline documentation is directly derived from the doxygen
+documentation of the C++ code. You will therefore see some references to C++
+and .h files that really don't make much sense for Python.
+This is due to a limitation of the tools we are currently using. Apologies.
 
 Image display without Python
 ----------------------------
