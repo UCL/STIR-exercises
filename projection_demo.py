@@ -5,6 +5,9 @@ Example script to forward/back-project some data.
 In this example, we will create projection data and images purely
 from within Python.
     
+Note that the code that use geometric shapes below needs a version of STIR
+later than 3Nov2018.
+
 Author: Kris Thielemans
 """
 
