@@ -49,10 +49,10 @@ projmatrix=stir.ProjMatrixByBinUsingRayTracing();
 projmatrix.set_up(proj_data_info, target);
 #%% construct projectors
 forwardprojector=stir.ForwardProjectorByBinUsingProjMatrixByBin(projmatrix);
-forwardprojector.set_up(projdataout.get_proj_data_info(), target);
+forwardprojector.set_up(proj_data_info, target);
 
 backprojector=stir.BackProjectorByBinUsingProjMatrixByBin(projmatrix);
-backprojector.set_up(projdataout.get_proj_data_info(), target);
+backprojector.set_up(proj_data_info, target);
 #%% create projection data for output of forward projection
 # We'll just create the data in memory here
 exam_info=stir.ExamInfo();
