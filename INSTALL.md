@@ -44,6 +44,15 @@ The STIR-exercises themselves don't need further installation. Just unpack them.
 
 Other utilities
 --------------
+### Jupyter
+If you want to sue the jupyter notebooks, you need to have a web-browser and jupyter.
+Please check [the jupyter installation instructions](http://jupyter.org/install). We
+have had luckk installing this via `pip`:
+```
+pip install jupyter
+```
+but [Anaconda](https://www.anaconda.com/what-is-anaconda/) should work as well of course.
+
 ### Spyder
 
 We recommend that you run the exercises from in an interactive Python
