@@ -43,9 +43,10 @@ We are using Python for the exercises. Python is an open-source interactive lang
 a bit like MATLAB. We provide Python scripts for the evaluation, so you should be fine.
 It would be best to read a Python tutorial first, see the [Appendices](#appendices). We currently have two alternatives for using the Python scripts:
 - [Spyder](https://pythonhosted.org/spyder) is an IDE for Python. This is
-  recommended for using the "normal" Python files (`*.py`).
+  recommended for using the "normal" Python files (`python/*.py`).
 - [Jupyter notebooks](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html)
-   provide a browser-based interface which keeps track of your work and results.
+   provide a browser-based interface which keeps track of your work and results. They use
+   Python as well.
    The notebooks are located in the folder `notebooks` (surprisingly).
 
 
@@ -53,7 +54,7 @@ As an alternative to Python, we also provide instructions (in the sections
 "command line evaluation")
 for loading sinograms and images in a display program. However, this is really not
 recommended as the Python scripts are much more convenient. 
-***If you are attending a course, only the Python notebooks will be used.***
+***If you are attending a course, only the Jupyter notebooks will be used.***
 Note that in the text below we’re using [AMIDE](http://amide.sf.net/) for
 display. ImageJ would work as well (see the end of the document).
 
@@ -121,7 +122,7 @@ Open the file `~/devel/STIR-exercises/evaluate_simulation_brain.py` in Spyder (o
 the path if you installed the exercises elsewhere). You can do this via its menus, or by
 typing in the terminal:
 ```
-spyder evaluate_simulation_brain.py&
+spyder python/evaluate_simulation_brain.py&
 ```
 Jupyter notebook evaluation
 ---------------------------
@@ -180,7 +181,7 @@ Python evaluation
 
 Start spyder with the evaluation script
 ```
-spyder evaluate_simulation_thorax.py&
+spyder python/evaluate_simulation_thorax.py&
 ```
 or if Spyder is running, just open the file.
 
@@ -205,7 +206,7 @@ Python evaluation
 
 Start spyder with the evaluation script
 ```
-spyder evaluate_simulation_SPECT.py&
+spyder python/evaluate_simulation_SPECT.py&
 ```
 or if spyder is running, just open the file.
 
@@ -250,7 +251,7 @@ As opposed to using scripts and parameter files, you can use STIR
 classes directly in Python as well of course. This exercise shows you
 how to use forward and backprojection, construct simple images etc.
 ```
-spyder projection_demo.py&
+spyder python/projection_demo.py&
 ```
 
 Exercise 4: Preparation for Image reconstruction exercise
@@ -306,7 +307,7 @@ Python evaluation
 
 Start spyder with the evaluation script
 ```
-spyder evaluate_reconstruction_brain.py&
+spyder python/evaluate_reconstruction_brain.py&
 ```
 or if spyder is running, just open the file. If you have run the thorax or SPECT simulation, 
 just adjust the path in Line 23 (or there abouts)
@@ -452,7 +453,7 @@ Sample questions to address:
 
 Start spyder with the evaluation script
 ```
-spyder evaluate_reconstruction_brain_MAP.py&
+spyder python/evaluate_reconstruction_brain_MAP.py&
 ```
 or if spyder is running, just open the file. If you have run the thorax or 
 SPECT simulation, just adjust the path in Line 23 (or there-abouts)
@@ -487,7 +488,7 @@ by changing the seed for the Poisson noise generator and re-running the script).
 
 Start spyder with the evaluation script to help you
 ```
-spyder evaluate_randoms.py&
+spyder python/evaluate_randoms.py&
 ```
 or if spyder is running, just open the file.
 
@@ -700,7 +701,7 @@ and change the collimator modelling and re-run the reconstruction script).
 
 Start spyder with the evaluation script
 ```
-spyder evaluate_reconstruction_SPECT_PSF.py&
+spyder python/evaluate_reconstruction_SPECT_PSF.py&
 ```
 or if spyder is running, just open the file.
 
