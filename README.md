@@ -41,14 +41,19 @@ The input data are stored in the folders called `EX_*`, but you will need to
 
 We are using Python for the exercises. Python is an open-source interactive language, 
 a bit like MATLAB. We provide Python scripts for the evaluation, so you should be fine.
-It would be best to read a Python tutorial first, see the [Appendices](#appendices). We will use
-[Spyder](https://pythonhosted.org/spyder) as our Python environment.
+It would be best to read a Python tutorial first, see the [Appendices](#appendices). We currently have two alternatives for using the Python scripts:
+- [Spyder](https://pythonhosted.org/spyder) is an IDE for Python. This is
+  recommended for using the "normal" Python files (`*.py`).
+- [Jupyter notebooks](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html)
+   provide a browser-based interface which keeps track of your work and results.
+   The notebooks are located in the folder `notebooks` (surprisingly).
+
 
 As an alternative to Python, we also provide instructions (in the sections 
 "command line evaluation")
 for loading sinograms and images in a display program. However, this is really not
 recommended as the Python scripts are much more convenient. 
-***If you are attending a course, only the Python scripts will be used.***
+***If you are attending a course, only the Python notebooks will be used.***
 Note that in the text below we’re using [AMIDE](http://amide.sf.net/) for
 display. ImageJ would work as well (see the end of the document).
 
@@ -62,19 +67,28 @@ Open a terminal and type
 ```
 export STIR_exercises_PATH=~/devel/STIR-exercises
 cd $STIR_exercises_PATH
-spyder&
 ```
 Of course, use the path where the STIR-exercises were installed. Note that on the VM,
 the first line is not necessary as it is incorporated into the start-up script.
 
+Now use either
+```
+jupyter notebook&
+```
+or
+```
+spyder&
+```
+
 You will then alternate between the terminal (to run shell scripts that execute STIR commands)
-and the spyder window (to run Python scripts that read in data and make plots).
+and the spyder/jupyter window (to run Python scripts that read in data and make plots).
+Or you could run the scripts from in the notebook or iPython session (see [#iPython]).
 
 **Note:**
 
 The shell scripts `*.sh` should all write `DONE` or `Done` at the end. If they didn’t,
 something went wrong. Check the log files (`*.log`) in the output directory
-for the script that failed.
+(`working_folder/...`) for the script that failed.
 
 **Note:**
 
@@ -109,6 +123,10 @@ typing in the terminal:
 ```
 spyder evaluate_simulation_brain.py&
 ```
+Jupyter notebook evaluation
+---------------------------
+In the jupyter interface, navigate to `notebooks` and open `evaluate_simulation_brain.ipynb`.
+
 Command line evaluation
 -----------------------
 You will need to extract the sinograms in an "image" Interfile to be able to load them in AMIDE
@@ -149,6 +167,13 @@ Read and run script:
 ```
 ./run_simulations_thorax.sh
 ```
+
+Jupyter notebook evaluation
+---------------------------
+Open `evaluate_simulation_thorax.ipynb'.
+
+*Jupyter notebook evaluation* instructions will not be given below, as they're
+straightforward almost-copies of the *Python evaluation* instructions.
 
 Python evaluation
 -----------------
@@ -739,6 +764,35 @@ for z in range(0,image.shape[0]):
 # now do something else
 ```
 
+Jupyter notebooks
+-----------------
+If you are trying this on your own and have never used Jupyter notebooks,
+you could [read the official documentation](https://jupyter-notebook.readthedocs.io/en/stable/notebook.html).
+A useful introduction to the notebook interface [can be found here](http://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Notebook%20Basics.html).
+
+In a nut-shell, you need to start the server
+```bash
+   cd /wherever/it/is/SIRF-Exercises
+   jupyter notebook
+```
+
+This will open a web-page that looks like a file browser
+(the *Jupyter Notebook dashboard*).
+Click on `notebooks`, and drill down until you find a file with the extension `.ipynb`
+that looks of interest, and click on that. This should open a new tab in your
+web browser with the notebook open, all ready to run.
+
+You will normally work by executing each *cell*
+bit by bit, and then editing it to do some more work. Useful 
+shortcuts:
+
+-   `LEFT-CTRL + <RETURN>` executes the current cell.
+-   `SHIFT + <RETURN>` executes the current cell and advances the cursor to the next
+     cell.
+-   `TAB` tries to complete the word/command you have just typed.
+
+Jupyter notebooks (normally) run iPython, [see the section below](#iPython) for some useful commands.
+
 Spyder
 ------
 We use Spyder as a nice Integrated Development Environment (IDE) for Python
@@ -770,6 +824,23 @@ You might be able to convince spyder to run iPython.
 And here are some useful iPython "magic" commands that you can use in the iPython
 console on the right (but not in the scripts). Most of these are identical
 to what you would use in the terminal. (*Note*: these commands do not work in a Python console.)
+
+- change how figures appear
+    - separate figures
+    ```
+    %matplotlib
+    ```
+
+    - inline with other output
+    ```     
+    %matplotlib inline
+    ```
+
+    - inline in the jupyter notebook but with extra options for the figures
+      (required for animations)
+    ```     
+     %matplotlib notebook
+    ```
 
 -   change to a new directory
 ```python
