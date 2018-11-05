@@ -772,13 +772,13 @@ A useful introduction to the notebook interface [can be found here](http://jupyt
 
 In a nut-shell, you need to start the server
 ```bash
-   cd /wherever/it/is/SIRF-Exercises
+   cd /wherever/it/is/STIR-exercises
    jupyter notebook
 ```
 
 This will open a web-page that looks like a file browser
 (the *Jupyter Notebook dashboard*).
-Click on `notebooks`, and drill down until you find a file with the extension `.ipynb`
+Click on `notebooks`, and find a file with the extension `.ipynb`
 that looks of interest, and click on that. This should open a new tab in your
 web browser with the notebook open, all ready to run.
 
@@ -792,6 +792,8 @@ shortcuts:
 -   `TAB` tries to complete the word/command you have just typed.
 
 Jupyter notebooks (normally) run iPython, [see the section below](#iPython) for some useful commands.
+
+Check the [jupyter doc on closing a notebook](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html#close-a-notebook-kernel-shut-down).
 
 Spyder
 ------
