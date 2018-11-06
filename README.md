@@ -328,6 +328,14 @@ old_evaluation_scripts/evaluate_reconstruction_brain.sh
 The script generates some differences images and launches AMIDE. You can of course modify
 the script for yourself or type commands on the command line.
 
+Optional exercise 2: Reconstruction in Python
+=========================================
+This exercise shows you how to use reconstruction directly in Python.
+```
+spyder python/reconstruction_demo.py&
+```
+
+
 Exercise 6: Image reconstruction part 2: adding Poisson noise
 =============================================================
 
