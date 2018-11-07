@@ -6,7 +6,7 @@ In this example, we will create projection data and images purely
 from within Python.
     
 Note that the code that use geometric shapes below needs a version of STIR
-later than 3Nov2018.
+later than 3Nov2018. There are no other prerequisites (i.e. no script to run first!).
 
 Author: Kris Thielemans
 """
@@ -25,21 +25,22 @@ print(scanner.parameter_info())
 #%% Now we need to describe the actual size of the projection data
 # We call this the `projection data information`.
 #
-# We will use a 2D PET acquisition in this example.
+# We will use a "2D" PET acquisition in this example.
 # This corresponds to `span=3`, with only 1 "segment".
 # You can ignore this terminology now, or check it out at
 # http://stir.sourceforge.net/documentation/STIR-glossary.pdf
-
 span=3;
 max_ring_diff=1;
 # use default number of "views" (or "azimutal angles")
 num_views=scanner.get_num_detectors_per_ring()/2;
+# construct the object using ProjDataInfoCTI
+# (the naming of this function was related to the scanner manufacturer, but will be changed in the future)
 proj_data_info=stir.ProjDataInfo.ProjDataInfoCTI(scanner,
                                                  span, max_ring_diff,
                                                  num_views, scanner.get_default_num_arccorrected_bins());
 
 #%% Create an empty image with suitable voxel sizes
-# use smaller voxels than the default
+# use smaller voxels than the default (we "zoom in")
 zoom=1.2;
 target=stir.FloatVoxelsOnCartesianGrid(proj_data_info, zoom);
 #%% initialise a projection matrix 
@@ -67,13 +68,26 @@ projdataout=stir.ProjDataInMemory(exam_info, proj_data_info);
 # the inner cylinder.)
 target.fill(2);
 forwardprojector.forward_project(projdataout, target);
-#%% display the output
+#%% A note on projection data sizes
+# In STIR Python, projection data after conversion to numpy is currently always a 3D array. This
+# simulation is of an acquisition in "2D" mode, but with several rings of detectors.
+# In that case, the projection  data has size num_sinograms x num_views x num_tangential_positions.
+# In "3D" acquisition mode, the situation is more complicated. Effectively all "segments"
+# are concatenated.
+
+#%% get the output
 # There will be only a single segment, corresponding to LORs orthogonal
 # to the scanner axis.
-# We'll display a single sinogram and a horizontal profile (i.e. projections
-# for a single "view")
+# As an alternative to using to_numpy, here we will extract the data for a single segment,
+# ordered "by sinogram".
+# For this particular simulation (with span>1), we will have the same number of sinograms as slices
+# in the image (both equal to 2*num_rings-1).
 seg=projdataout.get_segment_by_sinogram(0);
 seg_array=stirextra.to_numpy(seg);
+seg_array.shape
+#%% Display the data
+# We'll display a single sinogram and a horizontal profile (i.e. projections
+# for a single "slice" and "view"), but you could display the data in another cut of course.
 plt.figure();
 plt.subplot(1,2,1)
 plt.imshow(seg_array[10,:,:]);
@@ -135,7 +149,7 @@ shape.translate(stir.FloatCartesianCoordinate3D(40,70,40))
 # make a clone and fill that one with the second shape
 target2=target.clone()
 shape.construct_volume(target2, stir.IntCartesianCoordinate3D(1,1,1))
-# now add that to the previous one (by passing through numpy, sorry)
+# now add that to the previous one (currently messy as we need to pass through numpy, sorry)
 target_array=stirextra.to_numpy(target);
 target_array+=stirextra.to_numpy(target2);
 target.fill(target_array.flat)
@@ -155,18 +169,19 @@ plt.imshow(seg_array[middle_plane,:,:]);
 plt.title('Forward projection')
 plt.subplot(1,2,2)
 plt.plot(seg_array[middle_plane,0,:])
-#%% display all slices in a (repeated) loop
+#%% display all sinograms in a (repeated) loop
 import matplotlib.animation as animation
 bitmaps=[]
 fig=plt.figure()
-for plane in range(seg_array.shape[0]):
-    bitmap=plt.imshow(seg_array[plane,:,:]);
+for sino in range(seg_array.shape[0]):
+    bitmap=plt.imshow(seg_array[sino,:,:]);
     plt.clim(0,seg_array.max())
     plt.axis('off');
     bitmaps.append([bitmap])
 
 ani = animation.ArtistAnimation(fig, bitmaps, interval=100, blit=True, repeat_delay=1000)
-
+#%% It might make more sense to you if you display every view in the animation (as in the
+# evaluate_simulation* scripts), so try this now.
 
 #%% What now?
 # You have all the basic tools to do a simple analytic PET simulation

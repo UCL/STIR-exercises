@@ -8,6 +8,7 @@ for any data that you have.
 Prerequisite:
 You should have executed the following on your command prompt
     ./run_simulation_brain.sh
+    ./run_reconstruction_brain.sh
 However, it is easy to adapt this to other data-sets.
 
 Author: Kris Thielemans
@@ -64,4 +65,6 @@ recon.reconstruct(target);
 plt.figure()
 plt.imshow(npimage[10,:,:])
 plt.show()
-
+# What now?
+# You could check what other parameter files are available, check their content.
+# Advanced topic would be to add some filtering between iterations for regularisation

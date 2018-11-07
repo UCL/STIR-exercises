@@ -4,6 +4,7 @@ Example script to serve as starting point for displaying and comparing results o
 
 Prerequisite:
 You should have executed the following on your command prompt
+    ./run_simulations_thorax.sh
     ./run_MCIR_0.sh
     ./run_MCIR_2.sh
     ./run_MCIR_3.sh

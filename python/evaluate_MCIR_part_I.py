@@ -4,6 +4,7 @@ Example script to serve as starting point for displaying and comparing results o
 
 Prerequisite:
 You should have executed the following on your command prompt
+    ./run_simulations_thorax.sh
     ./run_MCIR_0.sh
     ./run_MCIR_1.sh
 
@@ -75,7 +76,7 @@ plt.legend(('MCIR','noMC'));
 
 #%% bitmap display of motion vectors 
 # The motion files forward & backward
-# First read in motion infomration from images
+# First read in motion information from images
 ForwardMotion_X=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_motion/motion_g1d1.hv'));
 ForwardMotion_Y=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_motion/motion_g1d2.hv'));
 ForwardMotion_Z=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_motion/motion_g1d3.hv'));
@@ -83,6 +84,7 @@ BackwardMotion_X=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_mot
 BackwardMotion_Y=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_motion/motion_inv_g1d2.hv'));
 BackwardMotion_Z=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EX_motion/motion_inv_g1d3.hv'));
 #%% bitmaps showing forward motion images
+# In the current demo, they are quite boring: the example motion is just a translation
 maxforplot=ForwardMotion_Z.max();
 
 # pick central slice

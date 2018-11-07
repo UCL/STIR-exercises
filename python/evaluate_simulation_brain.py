@@ -48,6 +48,14 @@ prompts=to_numpy(stir.ProjData.read_from_file('my_prompts.hs'));
 scatter=to_numpy(stir.ProjData.read_from_file('my_scatter.hs'));
 # randoms (constant)
 randoms=to_numpy(stir.ProjData.read_from_file('my_randoms.hs'));
+#%% A note on projection data sizes
+# In STIR Python, projection data after conversion to numpy is currently always a 3D array. This
+# simulation is of an acquisition in "2D" mode, but with several rings of detectors.
+# In that case, the projection  data has size num_sinograms x num_views x num_tangential_positions.
+# In "3D" acquisition mode, the situation is more complicated. Effectively all "segments"
+# are concatenated. You can ignore this terminology now, or check it out at
+# http://stir.sourceforge.net/documentation/STIR-glossary.pdf
+prompts.shape
 #%% Display bitmaps of a middle sinogram
 # Note that scatter is zero in this brain simulation
 fig=plt.figure()
