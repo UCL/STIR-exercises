@@ -171,10 +171,7 @@ Read and run script:
 
 Jupyter notebook evaluation
 ---------------------------
-Open `evaluate_simulation_thorax.ipynb'.
-
-*Jupyter notebook evaluation* instructions will not be given below, as they're
-straightforward almost-copies of the *Python evaluation* instructions.
+In the jupyter interface, navigate to `notebooks` and open `evaluate_simulation_thorax.ipynb'.
 
 Python evaluation
 -----------------
@@ -185,30 +182,6 @@ spyder python/evaluate_simulation_thorax.py&
 ```
 or if Spyder is running, just open the file.
 
-Exercise 3: Data Simulation Thorax with SPECT
-=============================================
-
-(Always run scripts from the `STIR-exercises` directory)
-
-This is a simple simulation of single slice of a thorax phantom for SPECT.
-PSF is incorporated. Scatter is set to zero.
-
-The aim of the exercise is first to see how SPECT sinograms differ from PET.
-
-Read and run script:
-```
-./run_simulation_SPECT.sh
-```
-Output is in `working_folder/single_slice_SPECT`.
-
-Python evaluation
------------------
-
-Start spyder with the evaluation script
-```
-spyder python/evaluate_simulation_SPECT.py&
-```
-or if spyder is running, just open the file.
 
 Command line evaluation
 -----------------------
@@ -245,14 +218,48 @@ old_evaluation_scripts/evaluate_simulation_thorax.sh
 ```
 to extract the segments and create profiles for you.
 
+
+Exercise 3: Data Simulation Thorax with SPECT
+=============================================
+
+(Always run scripts from the `STIR-exercises` directory)
+
+This is a simple simulation of single slice of a thorax phantom for SPECT.
+PSF is incorporated. Scatter is set to zero.
+
+The aim of the exercise is first to see how SPECT sinograms differ from PET.
+
+Read and run script:
+```
+./run_simulation_SPECT.sh
+```
+Output is in `working_folder/single_slice_SPECT`.
+
+Python evaluation
+-----------------
+
+Start spyder with the evaluation script
+```
+spyder python/evaluate_simulation_SPECT.py&
+```
+or if spyder is running, just open the file.
+
+Jupyter notebook evaluation
+---------------------------
+In the jupyter interface, navigate to `notebooks` and open `evaluate_simulation_SPECT.ipynb'.
+
+
 Optional exercise 1: Simulation in Python
 =========================================
 As opposed to using scripts and parameter files, you can use STIR
 classes directly in Python as well of course. This exercise shows you
 how to use forward and backprojection, construct simple images etc.
+
+To open in Spyder, type
 ```
 spyder python/projection_demo.py&
 ```
+or open the `notebooks/projection_demo.ipynb` notebook.
 
 Exercise 4: Preparation for Image reconstruction exercise
 =========================================================
@@ -264,6 +271,10 @@ This time just a single slice to speed things up. Scatter is also set to zero fo
 ```
 Output is in `working_folder/single_slice`. There is no real need to look at the generated results
 as they are a single sinogram of the thorax simulation (but without scatter and with PSF).
+
+
+*Jupyter notebook evaluation* instructions will not be given below, as they're
+straightforward almost-copies of the *Python evaluation* instructions.
 
 Exercise 5: Image reconstruction part 1: EMML and OSEM
 ======================================================
@@ -334,6 +345,7 @@ This exercise shows you how to use reconstruction directly in Python.
 ```
 spyder python/reconstruction_demo.py&
 ```
+or open the `notebooks/reconstruction_demo.ipynb` notebook.
 
 
 Exercise 6: Image reconstruction part 2: adding Poisson noise
