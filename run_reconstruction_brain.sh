@@ -6,6 +6,13 @@ rsync -auCv EX_reconstruction/ working_folder/brain/
 
 cd working_folder/brain/
 
-../../run_reconstructions.sh
+if ../../run_reconstructions.sh
+then
+    : # everything ok
+else
+    echo "Something went wrong."
+    echo "If you don't know what, you might need to check the most recent log file."
+    exit 1
+fi
 
 cd ../..

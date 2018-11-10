@@ -5,6 +5,18 @@
 # It is called by run_reconstruction_brain.sh etc and assumed that
 # certain par files and input data are available in the current directory
 
+if test -r FBP2D.par
+then
+    echo "Running reconstructions. Files are/will be in"
+    echo "   `pwd`"
+else
+    echo "I do not find FBP2D.par in the current directory."
+    echo "You might be executing this script directly as opposed to via"
+    echo "run_reconstruction_brain.sh etc."
+    echo "Aborting."
+    exit 1
+fi
+
 # running FBP, but need to know if PET or SPECT for precorrections
 if test -r my_prompts.hs
 then
@@ -12,10 +24,17 @@ then
     echo "running precorrection and FBP"
     stir_math -s --mult norm_ac_prompts.hs my_prompts.hs my_multfactors.hs > precorrection.log 2>&1
     stir_subtract -s precorrected.hs norm_ac_prompts.hs my_additive_sinogram.hs >> precorrection.log 2>&1
-else
+elif test -r my_sim.hs
+then        
     # SPECT
     # no precorrections
     echo "running FBP (without attenuation correction)"
+else
+    echo "I find no data in the folder."
+    echo "Expecting either my_prompts.hs or my_sim.hs."
+    echo "Did you run the simulation?"
+    echo "Aborting."
+    exit 1
 fi
 
 # note: currently need 1 thread only
