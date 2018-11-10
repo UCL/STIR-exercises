@@ -31,3 +31,4 @@ zoom_image preattenuation_zoomed.hv preattenuation.hv 211 1 0 0 15 0.148148148 -
 # we have to take the zoom-factor into account for this
 stir_math --including-first --times-scalar 0.048 --divide-scalar 6.75 attenuation.hv preattenuation_zoomed.hv
 
+rm preemission.*v preattenuation*v
