@@ -24,6 +24,9 @@ subset sensitivity filenames:= PSF_subset_sensitivity_8subsets_%d.hv
 ; here comes the prior stuff
   prior type := PLS
   PLS Prior Parameters:=
+  ; restrict to a 2D prior only here, to be able to reconstruct a single slice
+  only 2D:=1
+
   penalisation factor :=.01
 
   ; the prior has 2 parameters alpha and eta. It is computed for an image f as

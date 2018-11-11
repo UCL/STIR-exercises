@@ -699,11 +699,11 @@ A script is provided to generate results
 This will run OSEM and OSSPS (continuing from a previous OSEM image after 24
 subiterations) with PSF model (check e.g. `OSEMPSF.par`).
 
-Output is in `working_folder/single_slice_SPECT`.
+Output is in `working_folder/single_slice_SPECT` (or `brain` or `single_slice` of course).
 
 **Warning**:
 
-If you added noise to the data (exercise 6), the MAP reconstructions will also use
+If you added noise to the data (exercise 6), the reconstructions will also use
 the noisy data of course. See the MAP exercise for more info.
 
 Sample questions to address:
@@ -724,6 +724,64 @@ Start spyder with the evaluation script
 spyder python/evaluate_reconstruction_SPECT_PSF.py&
 ```
 or if spyder is running, just open the file.
+
+Exercise 12: Image reconstruction part 5: PSF and anatomical prior
+==================================================================
+We will now look at results with the Parallel Level Sets (PLS) prior.
+We will do this without and with PSF modelling included in the reconstruction.
+
+This exercise needs results from exercises 5 and 11. So, you should already have done
+the following steps (for instance for the brain, but the other cases works as well):
+```
+./run_simulation_brain.sh
+# optionally add noise as in Exercise 6 (recommended)
+./run_reconstruction_brain.sh
+./run_reconstruction_brain_PSF.sh
+```
+
+A script is provided to generate results
+```
+./run_reconstruction_brain_PLS.sh
+```
+This will run OSMAPOSL (continuing from a previous OSEM image after 24
+subiterations) with the PLS prior, with and without PSF model (check e.g.
+`OSMAPOSLPSF_PLS.par`).
+
+Output is in `working_folder/brain` (or in the `single_slice*` folders).
+
+When using the brain simulation, the anatomical image for PLS is a (brainweb simulated)
+T1 MRI. For the thorax and SPECT simulations, we use the "CTAC", as an MRI would
+usually not be available. You can of course change the brain case to the CTAC as well.
+
+**Warning**:
+
+If you added noise to the data (exercise 6), the reconstructions will also use
+the noisy data of course. See the MAP exercise for more info.
+
+Sample questions to address:
+
+**Warning**
+The settings for the prior work reasonably well for the brain simulation. You will
+need to adjust the penalty factor (as in the MAP exercise).
+
+Sample questions to address:
+
+-   Is it a good idea to use anatomical priors if you don't do PSF-modelling?
+
+-   Are any overshoots that you've seen with OSEMPSF reduced when using PLS?
+
+-   What is the effect of the alpha/eta parameters?
+
+Extension:
+-   PLS reduces to (smoothed) TV if the anatomical image is uniform. You could therefore
+use the same scripts to compare with (smoothed) TV.
+
+Start spyder with the evaluation script
+```
+spyder python/evaluate_reconstruction_brain_PLS.py&
+```
+or if spyder is running, just open the file.
+
 
 Appendices
 ==========
