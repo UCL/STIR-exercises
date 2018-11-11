@@ -339,7 +339,45 @@ old_evaluation_scripts/evaluate_reconstruction_brain.sh
 The script generates some differences images and launches AMIDE. You can of course modify
 the script for yourself or type commands on the command line.
 
-Optional exercise 2: Reconstruction in Python
+Optional exercise 2: Reconstruction with a smaller voxel size  
+=============================================================
+The aim of this exercise is to see how the values of the reconstructed images 
+depend the number of voxels. 
+
+(Always run scripts from the `STIR-exercises` directory)
+
+You will need to have run the corresponding reconstruction script from the previous section. 
+Output is in `working_folder/single_slice`.
+
+Then, Run
+```
+run_reconstruction_single_slice_thorax_with_zoom.sh
+```
+
+The script generates three sets of images. 
+The first image is at standard pixel size, 
+the second image is at half pixel size in the two directions, 
+but double number of pixels in total, 
+and the third image is also at half pixel size but in addition it uses 10 rays for ray tracing. 
+ 
+
+Python evaluation
+-----------------
+
+Start spyder with the evaluation script
+```
+spyder python/evaluate_reconstruction_single_slice_zoom.py&
+```
+or if spyder is running, just open the file. 
+
+If you wish, you can rerun the script and the evaluation 
+after noise has been included in the data to see the impact of the 
+aforementioned parameters in noisy datasets.
+
+
+
+
+Optional exercise 3: Reconstruction in Python
 =========================================
 This exercise shows you how to use reconstruction directly in Python.
 ```
