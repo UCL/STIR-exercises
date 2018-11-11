@@ -32,23 +32,17 @@ maxforplot=OSEM240.max();
 slice=numpy.int(OSEM240.shape[0]/2);
 #%% bitmap display of images OSEM vs OSEM zoomed
 fig=plt.figure();
-ax=plt.subplot(1,3,1);
+ax=plt.subplot(1,2,1);
 plt.imshow(OSEM240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.axis('off');
 ax.set_title('OSEM240');
 
-ax=plt.subplot(1,3,2);
+ax=plt.subplot(1,2,2);
 plt.imshow(2*OSEMZ240[slice,:,:,]);
 plt.clim(0,maxforplot)
 plt.axis('off');
 ax.set_title('OSEM z2');
-
-ax=plt.subplot(1,3,3);
-plt.imshow(2*OSEMZ10R240[slice,:,:,]);
-plt.clim(0,maxforplot)
-plt.axis('off');
-ax.set_title('OSEM z2 10R');
 
 fig.savefig('OSEM_vs_OSEMx2zoom.png')
 #%% bitmap display of images OSEM vs OSEM with half voxel size in each direction
