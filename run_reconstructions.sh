@@ -64,7 +64,7 @@ OSMAPOSL EMMLcont.par > EMMLcont.log 2>&1
 echo filtering the end result
 postfilter filtered_OSEM_240.hv OSEM_240.hv postfilter_Gaussian.par > postfilter_OSEM.log 2>&1
 
-echo Creating ground_truth.hv (with same voxel-size as the reconstruction)
+echo "Creating ground_truth.hv (with same voxel-size as the reconstruction)"
 zoom_image --template OSEM_24.hv ground_truth.hv emission.hv
 # rescale to STIR units used by the reconstruction
 zoom=`../../print_zoom_ratio.py emission.hv OSEM_24.hv`
