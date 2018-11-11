@@ -29,7 +29,7 @@ do
             ;;
     esac
     
-    for method in "" _MAP _PSF
+    for method in "" _MAP _PSF _PLS
     do
         script=./run_reconstruction_${data}${method}.sh
         if [ -r ${script} ]; then
@@ -57,5 +57,4 @@ done
 
 echo ""
 echo "All done!"
-echo "I did not run any PLS reconstructions though"
 
