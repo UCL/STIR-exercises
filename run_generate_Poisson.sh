@@ -31,6 +31,13 @@ fi
 seed=1
 
 poisson_noise -p $data.hs noiseless/$data.hs $scaling_factor $seed
+# echo "===  fixing SPECT headers"
+# It appears that the data is written with a "PET" header, as opposed to SPECT.
+# This is a bug in current STIR (a regression?).
+# So we will have to fix this up by using the template and some fancy scripting
+if [ $data = my_sim ]; then
+    sed -e"s/name of data file :=.*/name of data file := $data.s/" noiseless/$data.hs > $data.hs
+fi
 
 # save it elsewhere
 mkdir -p noise_$scaling_factor
