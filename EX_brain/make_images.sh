@@ -32,3 +32,6 @@ zoom_image preattenuation_zoomed.hv preattenuation.hv 211 1 0 0 15 0.148148148 -
 stir_math --including-first --times-scalar 0.048 --divide-scalar 6.75 attenuation.hv preattenuation_zoomed.hv
 
 rm preemission.*v preattenuation*v
+
+# zoom T1 image to same dimensions
+zoom_image --template emission.hv T1.hv t1_icbm_normal_3mm_pn3_rf20.hv

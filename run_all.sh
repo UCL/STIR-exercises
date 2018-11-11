@@ -57,4 +57,5 @@ done
 
 echo ""
 echo "All done!"
+echo "I did not run any PLS reconstructions though"
 

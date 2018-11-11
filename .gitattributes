@@ -1,6 +1,8 @@
 *.v     -text -diff
 *.s     -text -diff
 *.scn     -text -diff
+*.rawb     -text -diff
+*.scn     -text -diff
 *.sh    eol=lf
 *.jpg   -text -diff
 *.png   -text -diff
