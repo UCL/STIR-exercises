@@ -23,8 +23,6 @@ os.chdir(os.getenv('STIR_exercises_PATH'))
 #%% change directory to where the output files are
 os.chdir('working_folder/single_slice')
 #%% Read in images
-#FBP=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('fbp_recon.hv'));
-#EMML240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('EMML_240.hv'));
 OSEM240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_240.hv'));
 OSEMZ240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_zoom_240.hv'));
 OSEMZ10R240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_zoom_10rays_240.hv'));
@@ -98,6 +96,18 @@ plt.legend(('OSEM240','OSEMx2zoom240','OSEMx2zoom10rays240'));
 
 fig.savefig('OSEM_vs_OSEM2zoom_profiles.png')
 
+for line in open("OSEM.log"):
+ if "Total CPU" in line:
+   print line
+
+for line in open("OSEM_more_voxels.log"):
+ if "Total CPU" in line:
+   print line
+
+for line in open("OSEM_more_voxels_more_rays.log"):
+ if "Total CPU" in line:
+   print line
+
 #%% example code for seeing evaluation over iterations with OSEM, OSEM with zoom, OSEM with more rays 
 # First read in all iterations
 OSEM24=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_24.hv'));
@@ -122,6 +132,7 @@ OSEMZ10R216=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_zoom_1
 OSEMZ10R240=to_numpy(stir.FloatVoxelsOnCartesianGrid.read_from_file('OSEM_zoom_10rays_240.hv'));
 
 it = [24, 48, 72, 96, 120, 144, 168, 192, 216, 240];
+#The location of the voxel is chosen to be in the lung lesion 
 col=59;
 colz=col*2;
 rowz=2*row-1;
@@ -131,9 +142,10 @@ fig=plt.figure()
 plt.plot(it, OSEMvalues, 'bo')
 plt.plot(it, OSEMZ10Rvalues, 'ro')
 plt.axis([0, 250, 40, 70])
-plt.title('Image value over iteration')
+plt.title('Image value over subiteration')
 plt.legend(('OSEM','Zoomed OSEM'))
 plt.show();
+
 
 #%% close all plots
 plt.close('all')
