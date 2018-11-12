@@ -40,7 +40,7 @@ end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 
 initial estimate:= OSEM_24.hv
 
-output filename prefix := OSSPS_QP_low
+output filename prefix := OSSPS_QP_Low
 number of subsets:= 8
 number of subiterations:= 240
 save estimates at subiteration intervals:= 24
