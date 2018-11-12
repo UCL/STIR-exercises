@@ -11,7 +11,8 @@ then
     : # everything ok
 else
     echo "Something went wrong."
-    echo "If you don't know what, you might need to check the most recent log file."
+    echo "If you don't know what, you might need to check the most recent log file in"
+    echo "  `pwd`"
     exit 1
 fi
 
