@@ -45,7 +45,7 @@ OSMAPOSLParameters :=
 end PoissonLogLikelihoodWithLinearModelForMeanAndProjData Parameters:=
 
 	initial estimate:= init.hv
-	output filename prefix := OSL_QP_High
+	output filename prefix := OSL_QP_Low
 
 	number of subsets:= 8
 	number of subiterations:= 240
