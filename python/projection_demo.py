@@ -145,7 +145,7 @@ plt.xlabel('tangential')
 plt.ylabel('plane')
 plt.subplot(1,3,3)
 plt.plot(seg_array[middle_slice,0,:])
-plt.plot(seg_array[middle_slice,proj_data_info.get_num_views()/2,:])
+plt.plot(seg_array[middle_slice,int(proj_data_info.get_num_views()/2),:])
 plt.title('Horizontal profiles\n(middle sinogram)');
 plt.legend(('first view', 'middle view'));
 #%% display all sinograms in a (repeated) loop
@@ -189,7 +189,7 @@ plt.clim(0,maxforplot);
 #%% For this experiment, we will use a larger cylinder in the centre
 length=60
 radius=200
-middle_slice=(image_data.get_max_z()+image_data.get_min_z())/2
+middle_slice=int((image_data.get_max_z()+image_data.get_min_z())/2)
 z_centre=middle_slice*image_data.get_voxel_size().z()
 centre=stir.FloatCartesianCoordinate3D(z_centre,0,0)
 shape=stir.EllipsoidalCylinder(length, radius, radius,
