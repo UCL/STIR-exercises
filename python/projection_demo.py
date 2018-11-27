@@ -32,7 +32,7 @@ print(scanner.parameter_info())
 span=3;
 max_ring_diff=1;
 # use default number of "views" (or "azimutal angles")
-num_views=scanner.get_num_detectors_per_ring()/2;
+num_views=int(scanner.get_num_detectors_per_ring()/2);
 # construct the object using ProjDataInfoCTI
 # (the naming of this function was related to the scanner manufacturer, but will be changed in the future)
 proj_data_info=stir.ProjDataInfo.ProjDataInfoCTI(scanner,
