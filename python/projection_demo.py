@@ -74,7 +74,7 @@ projdataout=stir.ProjDataInMemory(exam_info, proj_data_info);
 # choice of origin (the middle of the first ring).
 length=60
 radius=40
-middle_slice=(image_data.get_max_z()+image_data.get_min_z())/2
+middle_slice=int((image_data.get_max_z()+image_data.get_min_z())/2)
 z_centre=middle_slice*image_data.get_voxel_size().z()
 # create a coordinate for the centre (note the z,y,x order)
 centre=stir.FloatCartesianCoordinate3D(z_centre,0,0)
