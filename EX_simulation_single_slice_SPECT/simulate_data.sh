@@ -42,12 +42,4 @@ fi
 echo "===  add noise"
 poisson_noise my_noisy_data.hs my_sim.hs 1 1
 
-echo "===  fixing SPECT headers"
-# It appears that the data is written with a "PET" header, as opposed to SPECT.
-# This is a bug in current STIR (a regression?).
-# So we will have to fix this up by using the template and some fancy scripting
-for f in my_noisy_data my_sim; do
-    sed -e"s/name of data file :=.*/name of data file := $f.s/" ${template_sino} > $f.hs
-done
-
 echo "Done creating simulated data"

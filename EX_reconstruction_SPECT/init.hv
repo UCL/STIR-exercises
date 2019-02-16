@@ -1,11 +1,10 @@
 !INTERFILE  :=
 name of data file := init.v
+!imaging modality := nucmed
 !GENERAL DATA :=
 !GENERAL IMAGE DATA :=
-!type of data := PET
+!type of data := Tomographic
 imagedata byte order := LITTLEENDIAN
-!PET STUDY (General) :=
-!PET data type := Image
 process status := Reconstructed
 !number format := float
 !number of bytes per pixel := 4
