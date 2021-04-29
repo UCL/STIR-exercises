@@ -8,6 +8,8 @@ output filename prefix := fbp_recon
 ; output image parameters
 ; zoom defaults to 1
 zoom := 1
+; work-around STIR problem on default z-voxel size
+z zoom:= .5
 ; image size defaults to whole FOV
 xy output image size (in pixels) := 155
 
