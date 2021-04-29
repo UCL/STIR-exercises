@@ -1,0 +1,30 @@
+correct_projdata Parameters := 
+
+  input file := ${INPUT}
+
+  output filename := ${OUTPUT}
+
+  ; default value for next is -1, meaning 'all segments'
+  ; maximum absolute segment number to process := 
+ 
+
+  ; precorrect data, or undo precorrection
+  apply (1) or undo (0) correction := 1
+
+
+  ; normalisation (or binwise multiplication, so can contain attenuation factors as well)
+  Bin Normalisation type := from projdata
+    Bin Normalisation From ProjData :=
+    normalisation projdata filename:= ${MULTFACTORS}
+    End Bin Normalisation From ProjData:=
+
+
+  ; "scatter" term to be subtracted AFTER norm+atten correction
+  ; Note that since STIR 4.0 estimate_scatter writes out the appropriate
+  ; term which includes randoms
+  scatter projdata filename := ${ADDSINO}
+
+  ; to interpolate to uniform sampling in 's', set value to 1
+  arc correction := 1
+
+END:= 

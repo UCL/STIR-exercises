@@ -3,8 +3,8 @@
 mkdir -p working_folder/MCIR/g1AC
 cp EX_motion/* working_folder/MCIR/g1AC
 cd working_folder/MCIR/g1AC
-cp ../../GATE1/*s .
-cp ../../GATE2/*s .
+cp ../../GATE1/*.*s .
+cp ../../GATE2/*.*s .
 
 # make MCIR.par by changing some names in MCIR_template.par
 # to the specific case needed here

@@ -6,7 +6,7 @@
 
 # Note that the scripts need to be executed in some order, so we try to do that here.
 
-for script in ./run_simulation*sh  ./run_scatter_[013].sh ./run_MCIR*.sh ./run_randoms.sh
+for script in ./run_simulation*sh  ./run_scatter_[03].sh ./run_MCIR*.sh ./run_randoms.sh
 do
     echo ""
     echo "============================================================"

@@ -2,7 +2,6 @@
 !imaging modality := PT
 name of data file := template_sinogram.hs
 originating system := ECAT 931
-!version of keys := STIR3.0
 !GENERAL DATA :=
 !GENERAL IMAGE DATA :=
 !type of data := PET
@@ -44,4 +43,7 @@ Number of crystals per singles unit in transaxial direction := 32
 end scanner parameters:=
 effective central bin size (cm) := 0.317225
 number of time frames := 1
+number of energy windows:=1
+energy window lower level[1]:=350
+energy window upper level[1]:=650
 !END OF INTERFILE :=

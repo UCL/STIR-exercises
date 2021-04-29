@@ -4,8 +4,8 @@
 mkdir -p working_folder/noMC
 cp EX_motion/* working_folder/noMC
 cd working_folder/noMC
-cp ../GATE1/*s .
-cp ../GATE2/*s .
+cp ../GATE1/*.*s .
+cp ../GATE2/*.*s .
 
 # make noMC.par by changing some names in MCIR_template.par
 # to the specific case needed here

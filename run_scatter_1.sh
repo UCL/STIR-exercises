@@ -1,4 +1,10 @@
 #! /bin/bash
+echo "This exercise is currently broken."
+exit 1
+
+# TODO the lines below were appropriate for the old version of STIR's scatter estimation
+# We still have to update it such that we can test doing the scatter estimation
+# with different energy windows
 export OMP_NUM_THREADS=1
 for g in 1 2 ; do 
     # set some initial variable such that the rest of the script is

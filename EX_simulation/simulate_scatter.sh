@@ -30,30 +30,17 @@ fi
 
 output=$1
 ACTIVITY_IMAGE=$2
-org_atten_image=$3
+ATTEN_IMAGE=$3
 norm=$4
 scatterparfile=$5
 TEMPLATE=$6
 
-#### Downsample the attenuation image
-# This will be used to "select" scatter points in the simulation.
-# Note: the more downsampling, the faster, but less accurate of course.
-# Downsampling factors are currently hard-wired in this script.
-# You could adjust these for your data.
-ATTEN_IMAGE=my_zoomed_${org_atten_image}
-zoom_xy=.33
-zoom_z=.5
-zoom_att_image.sh ${ATTEN_IMAGE%.hv} ${org_atten_image} ${zoom_xy} ${zoom_z}
-if [ $? -ne 0 ]; then
-  echo "Error running zoom_att_image.sh"
-  exit 1
-fi
 #### compute low resolution scatter
 OUTPUT_PREFIX=${output}_low_res
 export OUTPUT_PREFIX ACTIVITY_IMAGE ATTEN_IMAGE TEMPLATE
-estimate_scatter ${scatterparfile} 2> ${OUTPUT_PREFIX}_stderr.log
+simulate_scatter ${scatterparfile} 2> ${OUTPUT_PREFIX}_stderr.log
 if [ $? -ne 0 ]; then
-  echo "Error running estimate_scatter"
+  echo "Error running simulate_scatter"
   exit 1
 fi
 
