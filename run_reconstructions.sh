@@ -37,8 +37,7 @@ else
     exit 1
 fi
 
-# note: currently need 1 thread only
-OMP_NUM_THREADS=1 FBP2D FBP2D.par > FBP2D.log 2>&1
+FBP2D FBP2D.par > FBP2D.log 2>&1
 
 echo "running EMML 240 iterations (this might take a while)"
 OSMAPOSL EMML.par > EMML.log 2>&1
