@@ -8,6 +8,8 @@ with STIR. Please check [INSTALL.md](INSTALL.md) first (unless
 you have a Virtual Machine with the exercises
 pre-installed).
 
+The current version of the exercises need at least STIR 4.0.
+
 Authors:
 - Kris Thielemans
 - Charalampos Tsoumpas (initial scatter and motion exercises)
