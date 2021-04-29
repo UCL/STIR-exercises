@@ -67,7 +67,6 @@ postfilter filtered_OSEM_240.hv OSEM_240.hv postfilter_Gaussian.par > postfilter
 echo "Creating ground_truth.hv (with same voxel-size as the reconstruction)"
 zoom_image --template OSEM_24.hv ground_truth.hv emission.hv
 # rescale to STIR units used by the reconstruction
-zoom=`../../print_zoom_ratio.py emission.hv OSEM_24.hv`
-stir_math --including-first --accumulate --times-scalar $zoom --times-scalar $zoom ground_truth.hv
+zoom_image --scaling preserve_projections  --template OSEM_24.hv ground_truth.hv emission.hv
 
 echo DONE
