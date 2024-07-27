@@ -46,6 +46,24 @@ for g in 1 2 ; do
     echo "Estimating scatter"
     estimate_scatter $scatter_pardir/scatter_estimation.par >& estimate_${scatter_prefix}.log
 
+    echo "Running OSEM with scatter estimate"
+    INPUT=${sino_input} \
+         MULTFACTORS=../my_multfactors_g${g}.hs \
+         ADDSINO=${total_additive_prefix}_${num_scat_iters}.hs \
+	 OUTPUT=OSEM_recon_with_estimated_scatter OSMAPOSL ../OSEM_full.par
+
+    echo "Running OSEM with actual scatter"
+    INPUT=${sino_input} \
+         MULTFACTORS=../my_multfactors_g${g}.hs \
+         ADDSINO=../my_additive_sinogram_g${g}.hs \
+	 OUTPUT=OSEM_recon_with_actual_scatter OSMAPOSL ../OSEM_full.par
+
+    # copy to main directory with results
+    stir_math -s ../scatter_estimate${output_suffix}.hs ${scatter_prefix}_${num_scat_iters}.hs
+    stir_math ../OSEM_recon_with_estimated_scatter_96${output_suffix}.hv OSEM_recon_with_estimated_scatter_96.hv
+    stir_math ../OSEM_recon_with_actual_scatter_96.hv OSEM_recon_with_actual_scatter_96.hv
+
+    if false; then
     echo "Precorrect data for FBP"
     INPUT=${sino_input} OUTPUT=precorrected_g${g}.hs \
          MULTFACTORS=../my_multfactors_g${g}.hs \
@@ -54,11 +72,9 @@ for g in 1 2 ; do
     echo "Running FBP"
     INPUT=precorrected_g${g}.hs \
 	 OUTPUT=FBP_recon_with_scatter_correction FBP2D ../FBP2D_full.par
-
-    # copy to main directory with results
-    stir_math -s ../scatter_estimate${output_suffix}.hs ${scatter_prefix}_${num_scat_iters}.hs
-  stir_math ../FBP_recon_with_scatter_correction${output_suffix}.hv FBP_recon_with_scatter_correction.hv
-  cd ../../..
+    stir_math ../FBP_recon_with_scatter_correction${output_suffix}.hv FBP_recon_with_scatter_correction.hv
+    fi
+    cd ../../..
 done
 
 echo DONE
