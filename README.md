@@ -565,6 +565,9 @@ different questions about scatter.
 Ideal (i.e. correct attenuation map, scatter simulation matches with how the data
 was generated) scatter correction (using 3 scatter correction loops)
 
+***This script and its evaluation notebooks is superseded by the
+[`PET_scatter_estimation` notebook](notebooks/PET_scatter_estimation.ipynb).
+
 **Run 1**
 
 Calculate scatter by using a smaller energy window than that simulated. This will
