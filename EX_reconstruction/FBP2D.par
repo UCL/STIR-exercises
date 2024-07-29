@@ -23,6 +23,13 @@ cut-off for ramp filter (in cycles) := 0.5
 
 ; back projector that could be used (defaults to interpolating backprojector)
 ; Back projector type:= some type
+back projector type := Matrix
+back projector using matrix parameters :=
+matrix type := Ray Tracing
+ray tracing matrix parameters :=
+number of rays in tangential direction to trace for each bin := 10
+end ray tracing matrix parameters := 
+end back projector using matrix parameters :=
 
 ; display data during processing for debugging purposes
 ; Display level := 0
