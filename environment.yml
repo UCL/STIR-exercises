@@ -1,0 +1,14 @@
+channels:
+  - conda-forge
+dependencies:
+  - setuptools
+  - wheel
+  - pip
+  - pytest
+  - stir
+  - matplotlib
+  - zenodo_get
+  - jupyterlab_widgets
+  - ipywidgets>=8
+  - ipympl
+
