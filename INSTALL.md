@@ -14,11 +14,20 @@ Installing STIR and the exercises
 You will need the updated STIR source made available on [GitHub](https://github.com/UCL/STIR)
 for this course. Installation instructions are provided there.
 
-To be able to run these exercises you need to 
+By far the easiest way to get going it to use the conda-forge distribution of STIR.
+Probably you can use
+```sh
+cd ~/STIR_exercises # or wherever this file is
+conda create -n STIRExercises -f environment.yml
+```
+
+Alternatively, you need to 
 - build STIR with its Python interface (via SWIG) enabled. 
 - install STIR in your preferred location
 - have the STIR utilities in your `PATH`
 - add the STIR Python library to your `PYTHONPATH`
+
+In addition, you need to
 - set an environment variable `STIR_exercises_PATH` to where you installed the
 STIR exercises (i.e. where this file is). However, this is only used at the
 start of each script to go to the relevant directory.

@@ -8,7 +8,7 @@ with STIR. Please check [INSTALL.md](INSTALL.md) first (unless
 you have a Virtual Machine with the exercises
 pre-installed).
 
-The current version of the exercises need at least STIR 4.0.
+The current version of the exercises need at least STIR 6.0.
 
 Authors:
 - Kris Thielemans
@@ -44,18 +44,21 @@ The input data are stored in the folders called `EX_*`, but you will need to
 We are using Python for the exercises. Python is an open-source interactive language, 
 a bit like MATLAB. We provide Python scripts for the evaluation, so you should be fine.
 It would be best to read a Python tutorial first, see the [Appendices](#appendices). We currently have two alternatives for using the Python scripts:
-- [Spyder](https://pythonhosted.org/spyder) is an IDE for Python. This is
+- [Spyder](https://pythonhosted.org/spyder) or Visual Studio Code are IDEs for Python. This is
   recommended for using the "normal" Python files (`python/*.py`).
 - [Jupyter notebooks](http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/what_is_jupyter.html)
    provide a browser-based interface which keeps track of your work and results. They use
-   Python as well.
-   The notebooks are located in the folder `notebooks` (surprisingly).
+   Python as well. (you can load the notebooks in spyder/code as well).
+   The notebooks are located in the folder `notebooks` (surprisingly).<br>
+   There are some stand-alone notebooks as well with more up-to-date examples.
 
 
 As an alternative to Python, we also provide instructions (in the sections 
 "command line evaluation")
 for loading sinograms and images in a display program. However, this is really not
-recommended as the Python scripts are much more convenient. 
+recommended as the Python scripts are much more convenient and this capability is
+out-of-date and will be removed.
+ 
 ***If you are attending a course, only the Jupyter notebooks will be used.***
 Note that in the text below we’re using [AMIDE](http://amide.sf.net/) for
 display. ImageJ would work as well (see the end of the document).
@@ -76,11 +79,11 @@ the first line is not necessary as it is incorporated into the start-up script.
 
 Now use either
 ```
-jupyter notebook&
+jupyter lab&
 ```
 or
 ```
-spyder&
+code .
 ```
 
 You will then alternate between the terminal (to run shell scripts that execute STIR commands)
